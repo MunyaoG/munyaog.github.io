@@ -1,43 +1,42 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gertrude — Data Scientist, Nairobi</title>
-<meta name="description" content="Freelance data scientist in Nairobi. Actuarial reserving, forecasting, and applied machine learning.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#101B2D;
-    --ink-2:#152238;
-    --paper:#EFEAE0;
-    --paper-dim:#B9BEC4;
-    --line:#2A3A4D;
-    --brass:#C9A227;
-    --rust:#B6553A;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--ink);
-    color:var(--paper);
-    font-family:'Inter',system-ui,sans-serif;
-    line-height:1.55;
-  }
-  h1,h2,h3{
-    font-family:'Fraunces',serif;
-    font-weight:500;
-    margin:0 0 0.4em;
-    letter-spacing:-0.01em;
-  }
-  .num{font-family:'IBM Plex Mono',monospace;}
-  a{color:var(--brass);text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
-  section{padding:88px 0;}
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gertrude — Data Scientist, Nairobi</title>
+    <meta name="description" content="Freelance data scientist in Nairobi. Actuarial reserving, forecasting, and applied machine learning.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+      :root{
+        --ink:#101B2D;
+        --ink-2:#152238;
+        --paper:#EFEAE0;
+        --paper-dim:#B9BEC4;
+        --line:#2A3A4D;
+        --brass:#C9A227;
+        --rust:#B6553A;
+      }
+      *{box-sizing:border-box;}
+      html{scroll-behavior:smooth;}
+      body{
+        margin:0;
+        background:var(--ink);
+        color:var(--paper);
+        font-family:'Inter',system-ui,sans-serif;
+        line-height:1.55;
+      }
+      h1,h2,h3{
+        font-family:'Fraunces',serif;
+        font-weight:500;
+        margin:0 0 0.4em;
+        letter-spacing:-0.01em;
+      }
+      .num{font-family:'IBM Plex Mono',monospace;}
+      a{color:var(--brass);text-decoration:none;}
+      a:hover{text-decoration:underline;}
+      .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+      section{padding:88px 0;}
 
   /* NAV */
   nav{
