@@ -72,7 +72,7 @@
     }
 
     .wrap {
-      width: 90%;
+      width: 100%;
       margin-inline: auto;
       padding-inline: clamp(16px, 4vw, 48px);
     }
