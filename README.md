@@ -474,8 +474,8 @@
       <a class="brand" href="#top">Gertrude Munyao</a>
       <p class="eyebrow">Data Scientist · AI/ML · Nairobi, Kenya</p>
       <div class="nav-links">
-        <a href="#work">Projects</a>
-        <a href="#about">About</a>
+        <a href="my-projects">Projects</a>
+        <a href="about-me">About</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
