@@ -101,7 +101,7 @@
   }
   .chart-card{background:var(--paper-dim);border:1px solid var(--line);padding:18px;min-width:0;}
   .chart-card svg{display:block;width:100%;height:auto;}
-  .chart-card figcaption{font-size:13px;color:#5A5F6E;margin-top:10px;}
+   transform: translateY(-8px);
 
   /* Tables scroll horizontally instead of breaking page width on narrow screens */
   .table-scroll{
@@ -110,7 +110,7 @@
     margin:14px 0 8px;
   }
   table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0;}
-  .table-scroll table{min-width:540px;}
+  .table-scroll table{width: max-content; min-width:540px;}
   caption{text-align:left;font-size:13px;color:#5A5F6E;margin-bottom:6px;caption-side:top;}
   th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap;}
   th{font-weight:600;color:#3A3F4E;background:var(--paper-dim);}
@@ -203,36 +203,38 @@
 
     <div class="charts">
       <figure class="chart-card">
-        <svg viewBox="0 0 320 260" role="img" aria-label="Bar chart of facility types">
+        <svg viewBox="0 0 320 185" role="img" aria-label="Bar chart of facility types">
           <text x="0" y="16" font-size="12" fill="#3A3F4E" font-family="IBM Plex Sans, sans-serif" font-weight="600">Facility types (top 10)</text>
-          <g font-family="IBM Plex Sans, sans-serif" font-size="10.5" fill="#3A3F4E">
-            <text x="0" y="38">Medical Clinic</text><rect x="95" y="28" width="205" height="12" fill="#2B3A67"/><text x="304" y="38" text-anchor="end" fill="#fff" font-size="10">448</text>
-            <text x="0" y="58">Dispensary</text><rect x="95" y="48" width="87" height="12" fill="#2B3A67"/><text x="186" y="58" font-size="10">190</text>
-            <text x="0" y="78">Health Centre</text><rect x="95" y="68" width="40" height="12" fill="#2B3A67"/><text x="139" y="78" font-size="10">88</text>
-            <text x="0" y="98">VCT Centre</text><rect x="95" y="88" width="25" height="12" fill="#2B3A67"/><text x="124" y="98" font-size="10">54</text>
-            <text x="0" y="118">Other Hospital</text><rect x="95" y="108" width="18" height="12" fill="#2B3A67"/><text x="117" y="118" font-size="10">40</text>
-            <text x="0" y="138">Nursing Home</text><rect x="95" y="128" width="11" height="12" fill="#2B3A67"/><text x="110" y="138" font-size="10">25</text>
-            <text x="0" y="158">Maternity Home</text><rect x="95" y="148" width="6" height="12" fill="#2B3A67"/><text x="105" y="158" font-size="10">14</text>
-            <text x="0" y="178">Laboratory</text><rect x="95" y="168" width="6" height="12" fill="#2B3A67"/><text x="105" y="178" font-size="10">13</text>
-            <text x="0" y="198">Medical Centre</text><rect x="95" y="188" width="5" height="12" fill="#2B3A67"/><text x="104" y="198" font-size="10">12</text>
-            <text x="0" y="218">Dental Clinic</text><rect x="95" y="208" width="5" height="12" fill="#2B3A67"/><text x="104" y="218" font-size="10">10</text>
+          <g font-family="IBM Plex Sans, sans-serif" font-size="8" fill="#3A3F4E">
+            <text x="0" y="37">Medical Clinic</text><rect x="60" y="28" width="205" height="12" fill="#2B3A67"/><text x="268" y="37" font-size="7">448</text>
+            <text x="0" y="52">Dispensary</text><rect x="60" y="43" width="87" height="12" fill="#2B3A67"/><text x="150" y="52" font-size="7">190</text>
+            <text x="0" y="67">Health Centre</text><rect x="60" y="58" width="40" height="12" fill="#2B3A67"/><text x="103" y="67" font-size="7">88</text>
+            <text x="0" y="82">VCT Centre</text><rect x="60" y="73" width="25" height="12" fill="#2B3A67"/><text x="88" y="82" font-size="7">54</text>
+            <text x="0" y="97">Other Hospital</text><rect x="60" y="88" width="18" height="12" fill="#2B3A67"/><text x="81" y="97" font-size="7">40</text>
+            <text x="0" y="112">Nursing Home</text><rect x="60" y="103" width="11" height="12" fill="#2B3A67"/><text x="74" y="112" font-size="7">25</text>
+            <text x="0" y="127">Maternity Home</text><rect x="60" y="118" width="6" height="12" fill="#2B3A67"/><text x="69" y="127" font-size="7">14</text>
+            <text x="0" y="142">Laboratory</text><rect x="60" y="133" width="5" height="12" fill="#2B3A67"/><text x="68" y="142" font-size="7">13</text>
+            <text x="0" y="157">Medical Centre</text><rect x="60" y="148" width="4" height="12" fill="#2B3A67"/><text x="67" y="157" font-size="7">12</text>
+            <text x="0" y="172">Dental Clinic</text><rect x="60" y="163" width="3" height="12" fill="#2B3A67"/><text x="65" y="172" font-size="7">10</text>
           </g>
         </svg>
         <figcaption>Medical clinics and dispensaries dominate; smaller specialty facilities make up the long tail.</figcaption>
       </figure>
 
       <figure class="chart-card">
-        <svg viewBox="0 0 320 260" role="img" aria-label="Pie chart of facility operational status">
+        <svg viewBox="0 0 320 215" role="img" aria-label="Pie chart of facility operational status">
           <text x="0" y="16" font-size="12" fill="#3A3F4E" font-family="IBM Plex Sans, sans-serif" font-weight="600">Operational status</text>
-          <g transform="translate(160,145)">
-            <circle r="80" fill="#2B3A67"/>
+
+          <g transform="translate(160,112)">
+            <circle cx="0" cy="0" r="80" fill="#2B3A67"/>
             <path d="M0 0 L0 -80 A80 80 0 0 1 10.2 -79.3 Z" fill="#B4482E"/>
             <path d="M0 0 L10.2 -79.3 A80 80 0 0 1 13.4 -79 Z" fill="#C97A3D"/>
           </g>
-          <g font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#3A3F4E">
-            <rect x="0" y="220" width="10" height="10" fill="#2B3A67"/><text x="16" y="229">Operational — 97%</text>
-            <rect x="150" y="220" width="10" height="10" fill="#B4482E"/><text x="166" y="229">Closed — 2%</text>
-            <rect x="240" y="220" width="10" height="10" fill="#C97A3D"/><text x="256" y="229">Pending — 1%</text>
+
+          <g font-family="IBM Plex Sans, sans-serif" font-size="9" fill="#3A3F4E" transform="translate(0,196)">
+            <rect x="0" y="0" width="10" height="10" fill="#2B3A67"/><text x="16" y="9">Operational — 97%</text>
+            <rect x="120" y="0" width="10" height="10" fill="#B4482E"/><text x="136" y="9">Closed — 2%</text>
+            <rect x="215" y="0" width="10" height="10" fill="#C97A3D"/><text x="231" y="9">Pending — 1%</text>
           </g>
         </svg>
         <figcaption>19 closed, 6 pending opening — 25 facilities of capacity sitting idle.</figcaption>
