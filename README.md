@@ -543,7 +543,7 @@
               and selected health services against population and target ratios.
             </p>
             <div class="project-links">
-              <a href="https://munyaog.github.io/healthcare-gaps-analysis-python/">Case study</a>
+              <a href="https://munyaog.github.io/projects/nairobi-healthcare-access/">Case study</a>
               <a href="https://github.com/MunyaoG/healthcare-gaps-analysis-python">GitHub repo</a>
             </div>
           </article>
