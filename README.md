@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -73,8 +72,7 @@
     }
 
     .wrap {
-      width: 100%;
-      max-width: var(--content-width);
+      width: 90%;
       margin-inline: auto;
       padding-inline: clamp(16px, 4vw, 48px);
     }
@@ -161,9 +159,8 @@
     }
 
     .hero h1 {
-      max-width: 12ch;
-      margin-top: 12px;
-      font-size: clamp(2.5rem, 5vw, 4.4rem);
+      max-width: none;
+      white-space: nowrap;
     }
 
     .hero-copy {
@@ -444,6 +441,10 @@
       .hero {
         padding-top: 56px;
       }
+
+      .hero h1 {
+        font-size: 1.75rem;
+      }
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -471,6 +472,7 @@
   <nav aria-label="Main navigation">
     <div class="wrap">
       <a class="brand" href="#top">Gertrude Munyao</a>
+      <p class="eyebrow">Data Scientist · AI/ML · Nairobi, Kenya</p>
       <div class="nav-links">
         <a href="#work">Projects</a>
         <a href="#about">About</a>
@@ -483,7 +485,6 @@
     <header class="hero" id="top">
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow">Data Scientist · AI/ML · Nairobi, Kenya</p>
           <h1>Gertrude Munyao</h1>
           <p class="hero-copy">
             I turn complex data into practical decisions. With <strong>7+ years
@@ -817,55 +818,7 @@
         </div>
       </div>
     </section>
-
-    <section class="content-section" id="about">
-      <div class="wrap">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Background</p>
-            <h2>About</h2>
-          </div>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-copy">
-            <p>
-              I’m a Nairobi-based data scientist with experience spanning
-              freelance analytics, actuarial consulting, insurance finance, and
-              research. I have worked with teams at Pula Advisors, Lepton
-              Actuarial &amp; Consulting, UAP Old Mutual, and InfoTrak Research.
-            </p>
-            <p>
-              My actuarial background shapes how I approach data science:
-              define the question, validate the inputs, test the model, and
-              explain the result in terms people can use. I enjoy collaborating
-              with cross-functional teams and translating technical findings
-              into clear next steps.
-            </p>
-            <p>
-              I hold a Bachelor of Science in Actuarial Science from Dedan
-              Kimathi University of Technology and completed Data Science and
-              Machine Learning studies with WorldQuant University.
-            </p>
-          </div>
-
-          <div class="skills-list">
-            <div class="skill-group">
-              <h3>Programming and analysis</h3>
-              <p>Python, SQL, R, pandas, NumPy, scikit-learn</p>
-            </div>
-            <div class="skill-group">
-              <h3>Machine learning and statistics</h3>
-              <p>Predictive modeling, classification, regression, time series, NLP, actuarial modeling</p>
-            </div>
-            <div class="skill-group">
-              <h3>Data platforms and visualization</h3>
-              <p>BigQuery, Looker, Power BI, Tableau, Matplotlib, Seaborn</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
   </main>
 
   <footer id="contact">
