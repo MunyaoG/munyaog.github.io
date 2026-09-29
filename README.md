@@ -1,350 +1,881 @@
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gertrude — Data Scientist, Nairobi</title>
-    <meta name="description" content="Freelance data scientist in Nairobi. Actuarial reserving, forecasting, and applied machine learning.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-    <style>
-      :root{
-        --ink:#101B2D;
-        --ink-2:#152238;
-        --paper:#EFEAE0;
-        --paper-dim:#B9BEC4;
-        --line:#2A3A4D;
-        --brass:#C9A227;
-        --rust:#B6553A;
-      }
-      *{box-sizing:border-box;}
-      html{scroll-behavior:smooth;}
-      body{
-        margin:0;
-        background:var(--ink);
-        color:var(--paper);
-        font-family:'Inter',system-ui,sans-serif;
-        line-height:1.55;
-      }
-      h1,h2,h3{
-        font-family:'Fraunces',serif;
-        font-weight:500;
-        margin:0 0 0.4em;
-        letter-spacing:-0.01em;
-      }
-      .num{font-family:'IBM Plex Mono',monospace;}
-      a{color:var(--brass);text-decoration:none;}
-      a:hover{text-decoration:underline;}
-      .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
-      section{padding:88px 0;}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gertrude Munyao is a Nairobi-based data scientist working across machine learning, actuarial analysis, forecasting, and business intelligence.">
+  <title>Gertrude Munyao | Data Scientist</title>
 
-  /* NAV */
-  nav{
-    position:sticky;top:0;z-index:10;
-    background:rgba(16,27,45,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  nav .wrap{
-    display:flex;justify-content:space-between;align-items:center;
-    padding-top:16px;padding-bottom:16px;
-  }
-  nav .brand{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--paper);}
-  nav .links{display:flex;gap:28px;font-size:0.9rem;}
-  nav .links a{color:var(--paper-dim);}
-  nav .links a:hover{color:var(--paper);text-decoration:none;}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 
-  /* HERO */
-  .hero{padding-top:72px;padding-bottom:72px;}
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:56px;
-    align-items:center;
-  }
-  .hero h1{font-size:2.5rem;line-height:1.15;max-width:14ch;}
-  .hero p{color:var(--paper-dim);max-width:46ch;font-size:1.05rem;}
-  .hero .role{
-    color:var(--brass);font-size:0.95rem;margin-bottom:18px;
-  }
-  .stack-list{
-    margin-top:28px;font-size:0.9rem;color:var(--paper-dim);
-  }
-  .stack-list span{color:var(--paper);}
-
-  /* TRIANGLE GRAPHIC */
-  .tri-card{
-    border:1px solid var(--line);
-    border-radius:4px;
-    padding:24px;
-    background:var(--ink-2);
-  }
-  .tri-grid{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:3px;
-    margin-bottom:20px;
-  }
-  .tri-cell{
-    aspect-ratio:1;
-    border-radius:2px;
-    background:var(--line);
-  }
-  .tri-stat{border-bottom:1px dashed var(--line);padding-bottom:16px;margin-bottom:14px;}
-  .tri-stat .num{font-size:2rem;color:var(--paper);display:block;}
-  .tri-stat .cap{color:var(--paper-dim);font-size:0.85rem;}
-  .tri-caption{font-size:0.8rem;color:var(--paper-dim);}
-  .tri-caption strong{color:var(--paper);font-weight:500;}
-
-  /* SECTION HEADS */
-  .section-head{margin-bottom:40px;}
-  .section-head h2{font-size:1.6rem;}
-  .section-head p{color:var(--paper-dim);max-width:56ch;margin:0;}
-
-  /* FEATURED CARDS */
-  .feature{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    border:1px solid var(--line);
-    border-radius:4px;
-    padding:36px;
-    margin-bottom:24px;
-  }
-  .feature h3{font-size:1.3rem;}
-  .feature .tag-row{margin-bottom:14px;}
-  .feature p{color:var(--paper-dim);margin:0 0 14px;}
-  .feature-stats{display:flex;gap:28px;margin-top:18px;flex-wrap:wrap;}
-  .feature-stats div{border-top:1px solid var(--line);padding-top:8px;min-width:110px;}
-  .feature-stats .num{color:var(--brass);font-size:1.15rem;display:block;}
-  .feature-stats .cap{color:var(--paper-dim);font-size:0.78rem;}
-  .tag{
-    display:inline-block;font-size:0.75rem;color:var(--paper-dim);
-    border:1px solid var(--line);border-radius:3px;
-    padding:3px 8px;margin:0 6px 6px 0;
-  }
-  .repo-link{font-size:0.9rem;}
-
-  /* GRID OF OTHER PROJECTS */
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-  }
-  .card{
-    border:1px solid var(--line);
-    border-radius:4px;
-    padding:24px;
-  }
-  .card h3{font-size:1.05rem;margin-bottom:8px;}
-  .card p{color:var(--paper-dim);font-size:0.92rem;margin:0 0 14px;}
-  .card .repo-link{font-size:0.85rem;}
-
-  /* SKILLS */
-  .skills{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:28px;
-  }
-  .skills h3{font-size:0.95rem;color:var(--brass);margin-bottom:10px;font-weight:500;}
-  .skills p{color:var(--paper-dim);margin:0;font-size:0.92rem;}
-
-  footer{
-    border-top:1px solid var(--line);
-    padding:48px 0;
-    color:var(--paper-dim);
-    font-size:0.9rem;
-  }
-  footer a{color:var(--paper);}
-
-  @media (max-width:760px){
-    .hero-grid{grid-template-columns:1fr;}
-    .feature{grid-template-columns:1fr;}
-    .grid{grid-template-columns:1fr;}
-    .skills{grid-template-columns:1fr;}
-    .hero h1{font-size:2rem;}
-    section{padding:56px 0;}
-  }
-</style>
-</head>
-<body>
-
-<nav>
-  <div class="wrap">
-    <span class="brand">Gertrude</span>
-    <div class="links">
-      <a href="#work">Work</a>
-      <a href="#stack">Stack</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="role">Freelance Data Scientist · Nairobi</div>
-      <h1>Turning messy data into numbers people can act on.</h1>
-      <p>Six years across data science, actuarial work, and business intelligence — including roles at Pula Advisors, Lepton Actuarial &amp; Consulting, UAP Old Mutual, InfoTrak Research, and Bolt. I build models that hold up outside the notebook: reserving triangles, fraud detection, demand forecasting, and the pipelines behind them.</p>
-      <div class="stack-list">Working stack: <span>Python</span>, <span>SQL</span>, <span>Power BI</span>, <span>Tableau</span>, <span>PyTorch</span>, <span>BigQuery</span></div>
-    </div>
-    <div class="tri-card">
-      <div class="tri-grid" id="triGrid"></div>
-      <div class="tri-stat">
-        <span class="num">$19.99M</span>
-        <span class="cap">projected reserve — chain ladder model, 1,342 claims</span>
-      </div>
-      <div class="tri-caption">A claims development triangle, built from scratch in Python. <strong>See the full breakdown below.</strong></div>
-    </div>
-  </div>
-</section>
-
-<section id="work">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Featured work</h2>
-      <p>Two projects that go past the standard tutorial dataset — one from actuarial reserving, one from operational telemetry.</p>
-    </div>
-
-    <div class="feature">
-      <div>
-        <div class="tag-row">
-          <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">actuarial</span>
-        </div>
-        <h3>Claims reserving with the chain ladder method</h3>
-        <p>A from-scratch implementation of chain ladder reserving — no actuarial library shortcuts. Builds a claims development triangle from raw payment data, derives loss development factors, and projects ultimate losses.</p>
-        <p><a class="repo-link" href="https://github.com/MunyaoG/liability-projection-in-python">View repository →</a></p>
-      </div>
-      <div>
-        <p>Every step is self-checked: triangle totals are reconciled against the raw data two independent ways before any projection runs.</p>
-        <div class="feature-stats">
-          <div><span class="num">10×10</span><span class="cap">development triangle</span></div>
-          <div><span class="num">9</span><span class="cap">years forecast, discounted</span></div>
-          <div><span class="num">4%</span><span class="cap">discount rate applied</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feature">
-      <div>
-        <div class="tag-row">
-          <span class="tag">Python</span><span class="tag">regression</span><span class="tag">time series</span>
-        </div>
-        <h3>Flagging failing EV batteries before they fail</h3>
-        <p>Analyzed swap and telemetry data from an EV motorcycle fleet to catch batteries degrading faster than normal — then modeled what drives that decline and forecast fleet-wide usage ten months out.</p>
-        <p><a class="repo-link" href="https://github.com/MunyaoG/EV-Motorcycles-Battery-Data-Analysis">View repository →</a></p>
-      </div>
-      <div>
-        <p>Regression tied low usage to charged capacity, alarm flags, and max charge current — turning a statistical flag into a maintenance action.</p>
-        <div class="feature-stats">
-          <div><span class="num">97</span><span class="cap">batteries flagged</span></div>
-          <div><span class="num">1.35</span><span class="cap">regression MSE</span></div>
-          <div><span class="num">4.34</span><span class="cap">ARIMA forecast MAE</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>More projects</h2>
-      <p>Smaller, focused pieces — each built to compare methods honestly rather than just report one score.</p>
-    </div>
-    <div class="grid">
-
-      <div class="card">
-        <h3>Fraud transaction detection</h3>
-        <p>Cleaned a 24-million-row transaction dataset with under 0.2% fraud, built balanced training samples, and evaluated a Random Forest across five resamples.</p>
-        <a class="repo-link" href="https://github.com/MunyaoG/complex-data-manipulation-model-fitting-and-evaluation">View repository →</a>
-      </div>
-
-      <div class="card">
-        <h3>Iris flower classification</h3>
-        <p>Decision Tree, Logistic Regression, and SVM compared head-to-head, plus a tuning pass that confirmed the simpler model already generalized best.</p>
-        <a class="repo-link" href="https://github.com/MunyaoG/classification-models">View repository →</a>
-      </div>
-
-      <div class="card">
-        <h3>House price prediction</h3>
-        <p>Linear Regression, Gradient Boosting, and Random Forest tested against each other on structural and location features — the linear model won.</p>
-        <a class="repo-link" href="https://github.com/MunyaoG/regression-models">View repository →</a>
-      </div>
-
-      <div class="card">
-        <h3>Movie review sentiment analysis</h3>
-        <p>TF-IDF features feeding Logistic Regression and Complement Naive Bayes across 50,000 IMDB reviews, scored on precision, recall, and F1.</p>
-        <a class="repo-link" href="https://github.com/MunyaoG/nlp-classification-models">View repository →</a>
-      </div>
-
-      <div class="card">
-        <h3>Football match outcome predictor</h3>
-        <p>A recency-weighted home/away statistics engine over eight seasons of match data, wrapped in a small Gradio app for quick lookups.</p>
-        <a class="repo-link" href="https://github.com/MunyaoG/sports-match-outcome-prediction">View repository →</a>
-      </div>
-
-      <div class="card">
-        <h3>Claims reserving in R</h3>
-        <p>The companion R implementation of the chain ladder model — same triangle logic, same reserving method, built before the Python port above.</p>
-        <a class="repo-link" href="https://github.com/MunyaoG/liability-projection-in-R">View repository →</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="stack">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Tools I work in</h2>
-    </div>
-    <div class="skills">
-      <div>
-        <h3>Languages &amp; analysis</h3>
-        <p>Python, SQL, R</p>
-      </div>
-      <div>
-        <h3>Modeling</h3>
-        <p>scikit-learn, PyTorch, statsmodels, agent evaluation frameworks</p>
-      </div>
-      <div>
-        <h3>BI &amp; data platforms</h3>
-        <p>Power BI, Tableau, BigQuery, Looker, Git</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer id="contact">
-  <div class="wrap">
-    <p>Based in Nairobi, working with teams anywhere. Reach me via <a href="https://github.com/MunyaoG">GitHub</a> or add your email/LinkedIn link here.</p>
-  </div>
-</footer>
-
-<script>
-  // Draw a small loss-triangle motif: filled upper-left, empty lower-right,
-  // shading intensity fading down each column to suggest development decay.
-  const grid = document.getElementById('triGrid');
-  const size = 7;
-  for (let row = 0; row < size; row++) {
-    for (let col = 0; col < size; col++) {
-      const cell = document.createElement('div');
-      cell.className = 'tri-cell';
-      if (row + col < size - 1) {
-        const depth = row / size;
-        const opacity = 0.85 - depth * 0.55;
-        cell.style.background = `rgba(201,162,39,${opacity.toFixed(2)})`;
-      } else if (row + col === size - 1) {
-        cell.style.background = 'var(--rust)';
-      } else {
-        cell.style.background = 'transparent';
-        cell.style.border = '1px dashed var(--line)';
-      }
-      grid.appendChild(cell);
+  <style>
+    :root {
+      --ink: #101b2d;
+      --panel: #152238;
+      --paper: #f2efe6;
+      --muted: #bdc5cb;
+      --line: #344457;
+      --gold: #d8b63f;
+      --coral: #e07151;
+      --mint: #75cbb3;
+      --content-width: 1160px;
     }
-  }
-</script>
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--mint);
+      outline-offset: 4px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0 0 0.55em;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    p {
+      margin: 0 0 1em;
+    }
+
+    .mono {
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--content-width);
+      margin-inline: auto;
+      padding-inline: clamp(16px, 4vw, 48px);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 20;
+      transform: translateY(-150%);
+      padding: 10px 14px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgb(16 27 45 / 94%);
+      backdrop-filter: blur(10px);
+    }
+
+    nav .wrap {
+      display: flex;
+      min-height: 68px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--paper);
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.15rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--paper);
+      text-decoration: none;
+    }
+
+    .hero {
+      padding-block: clamp(64px, 10vw, 112px) 80px;
+      background-image:
+        linear-gradient(rgb(117 203 179 / 4%) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(117 203 179 / 4%) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+      align-items: center;
+      gap: clamp(32px, 7vw, 88px);
+    }
+
+    .hero h1 {
+      max-width: 12ch;
+      margin-top: 12px;
+      font-size: clamp(2.5rem, 5vw, 4.4rem);
+    }
+
+    .hero-copy {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-copy strong {
+      color: var(--paper);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border: 1px solid var(--gold);
+      color: var(--paper);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .button:hover {
+      text-decoration: none;
+      filter: brightness(1.08);
+    }
+
+    .impact {
+      padding: 24px;
+      border-top: 3px solid var(--coral);
+      background: var(--panel);
+    }
+
+    .impact h2 {
+      margin-bottom: 20px;
+      font-size: 1.25rem;
+    }
+
+    .impact-item {
+      padding-block: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .impact-item .mono {
+      display: block;
+      color: var(--mint);
+      font-size: 1.35rem;
+    }
+
+    .impact-item p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    section.content-section {
+      padding-block: 76px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      margin: 8px 0 0;
+      font-size: 2rem;
+    }
+
+    .section-heading p {
+      max-width: 56ch;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .project-card h3 {
+      margin: 12px 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .project-card p {
+      flex: 1;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .project-type {
+      color: var(--mint);
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .case-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .case-study {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.65fr) minmax(0, 1.35fr);
+      gap: 32px;
+      padding-block: 30px;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 88px;
+    }
+
+    .case-study h3 {
+      margin: 8px 0;
+      font-size: 1.35rem;
+    }
+
+    .case-study p {
+      max-width: 70ch;
+      margin-bottom: 12px;
+      color: var(--muted);
+    }
+
+    .case-study .back-link {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 0.85rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+      gap: 40px;
+    }
+
+    .about-copy {
+      max-width: 68ch;
+      color: var(--muted);
+    }
+
+    .about-copy strong {
+      color: var(--paper);
+      font-weight: 500;
+    }
+
+    .skills-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .skill-group {
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .skill-group h3 {
+      margin-bottom: 6px;
+      color: var(--gold);
+      font-family: "Inter", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .skill-group p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    footer {
+      padding-block: 44px;
+      border-top: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-content p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .impact {
+        max-width: 620px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav .wrap {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        padding-block: 12px;
+      }
+
+      .nav-links {
+        gap: 16px;
+        font-size: 0.84rem;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case-study {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      section.content-section {
+        padding-block: 56px;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-grid {
+        animation: enter 600ms ease-out both;
+      }
+
+      @keyframes enter {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav aria-label="Main navigation">
+    <div class="wrap">
+      <a class="brand" href="#top">Gertrude Munyao</a>
+      <div class="nav-links">
+        <a href="#work">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Data Scientist · AI/ML · Nairobi, Kenya</p>
+          <h1>Gertrude Munyao</h1>
+          <p class="hero-copy">
+            I turn complex data into practical decisions. With <strong>7+ years
+            across data science, actuarial analysis, and business intelligence</strong>,
+            I build predictive models, forecasts, analytical tools, and dashboards
+            that help teams act with confidence.
+          </p>
+          <p class="hero-copy">
+            My work spans Python, SQL, and R, from data preparation and model
+            validation to communicating findings clearly to non-technical teams.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work">Explore projects</a>
+            <a class="button" href="mailto:gertrudemunyao@gmail.com">Get in touch</a>
+          </div>
+        </div>
+
+        <aside class="impact" aria-label="Selected work outcomes">
+          <h2>Selected outcomes</h2>
+          <div class="impact-item">
+            <span class="mono">8%</span>
+            <p>growth in campaign-attributed revenue through targeted campaigns</p>
+          </div>
+          <div class="impact-item">
+            <span class="mono">200+</span>
+            <p>teams covered by a real-time football match prediction app</p>
+          </div>
+          <div class="impact-item">
+            <span class="mono">15+</span>
+            <p>group insurance claims processed weekly with actuarial data models</p>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="content-section" id="work">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2>Projects</h2>
+          </div>
+          <p>
+            Applied projects across healthcare, actuarial analysis, machine
+            learning, and forecasting. Each project links to its case study and
+            source repository.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <span class="project-type">Healthcare · Python</span>
+            <h3>Mapping healthcare access gaps</h3>
+            <p>
+              Compared Nairobi sub-counties on facility access, bed availability,
+              and selected health services against population and target ratios.
+            </p>
+            <div class="project-links">
+              <a href="https://munyaog.github.io/healthcare-gaps-analysis-python/">Case study</a>
+              <a href="https://github.com/MunyaoG/healthcare-gaps-analysis-python">GitHub repo</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Actuarial · Python</span>
+            <h3>Claims reserving with chain ladder</h3>
+            <p>
+              Built a claims development triangle, calculated loss development
+              factors, and projected ultimate losses from payment data.
+            </p>
+            <div class="project-links">
+              <a href="#case-chain-ladder-python">Case study</a>
+              <a href="https://github.com/MunyaoG/liability-projection-in-python">GitHub repo</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Mobility · Time series</span>
+            <h3>EV battery performance analysis</h3>
+            <p>
+              Analyzed motorcycle battery swap and telemetry data to identify
+              degradation patterns and forecast fleet usage.
+            </p>
+            <div class="project-links">
+              <a href="#case-ev-batteries">Case study</a>
+              <a href="https://github.com/MunyaoG/EV-Motorcycles-Battery-Data-Analysis">GitHub repo</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Forecasting · Python</span>
+            <h3>Football match outcome predictor</h3>
+            <p>
+              Created a web app that uses recency-weighted historical performance
+              to estimate outcomes across leagues and teams.
+            </p>
+            <div class="project-links">
+              <a href="#case-football">Case study</a>
+              <a href="https://github.com/MunyaoG/sports-match-outcome-prediction">GitHub repo</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Machine learning · Python</span>
+            <h3>Fraud transaction detection</h3>
+            <p>
+              Prepared highly imbalanced transaction data and evaluated a
+              Random Forest approach to detecting potential fraud.
+            </p>
+            <div class="project-links">
+              <a href="#case-fraud">Case study</a>
+              <a href="https://github.com/MunyaoG/complex-data-manipulation-model-fitting-and-evaluation">GitHub repo</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">NLP · Python</span>
+            <h3>Movie review sentiment analysis</h3>
+            <p>
+              Compared text classification methods on IMDB reviews using TF-IDF
+              features and standard classification metrics.
+            </p>
+            <div class="project-links">
+              <a href="#case-sentiment">Case study</a>
+              <a href="https://github.com/MunyaoG/nlp-classification-models">GitHub repo</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Regression · Python</span>
+            <h3>House price prediction</h3>
+            <p>
+              Compared linear and tree-based regression models on structural and
+              location features to predict house prices.
+            </p>
+            <div class="project-links">
+              <a href="#case-house-prices">Case study</a>
+              <a href="https://github.com/MunyaoG/regression-models">GitHub repo</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Classification · Python</span>
+            <h3>Iris flower classification</h3>
+            <p>
+              Compared Decision Tree, Logistic Regression, and SVM models, then
+              checked whether tuning improved generalization.
+            </p>
+            <div class="project-links">
+              <a href="#case-iris">Case study</a>
+              <a href="https://github.com/MunyaoG/classification-models">GitHub repo</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Actuarial · R</span>
+            <h3>Claims reserving in R</h3>
+            <p>
+              Implemented the chain ladder reserving approach in R as a companion
+              to the Python project.
+            </p>
+            <div class="project-links">
+              <a href="#case-chain-ladder-r">Case study</a>
+              <a href="https://github.com/MunyaoG/liability-projection-in-R">GitHub repo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="case-studies-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Methods and context</p>
+            <h2 id="case-studies-title">Project case studies</h2>
+          </div>
+          <p>
+            A closer look at the questions, methods, and practical takeaways
+            behind selected projects.
+          </p>
+        </div>
+
+        <div class="case-list">
+          <article class="case-study" id="case-chain-ladder-python">
+            <div>
+              <p class="eyebrow">Actuarial · Python</p>
+              <h3>Claims reserving with chain ladder</h3>
+            </div>
+            <div>
+              <p>
+                This project estimates future claim liabilities from historical
+                payment development. It builds a development triangle from raw
+                payment data, derives loss development factors, and applies the
+                chain ladder method to project ultimate losses.
+              </p>
+              <p>
+                The calculations include reconciliation checks against the source
+                payment data before projections are made.
+              </p>
+              <a class="back-link" href="#work">Back to projects ↑</a>
+            </div>
+          </article>
+
+          <article class="case-study" id="case-ev-batteries">
+            <div>
+              <p class="eyebrow">Mobility · Python</p>
+              <h3>EV battery performance analysis</h3>
+            </div>
+            <div>
+              <p>
+                This analysis uses battery swap and telemetry data to investigate
+                changes in battery performance across an electric motorcycle
+                fleet. Regression analysis examined factors associated with lower
+                usage, including charged capacity, alarm flags, and maximum
+                charge current.
+              </p>
+              <p>
+                The project also applies time-series forecasting to estimate
+                future fleet usage and help translate data patterns into
+                maintenance questions.
+              </p>
+              <a class="back-link" href="#work">Back to projects ↑</a>
+            </div>
+          </article>
+
+          <article class="case-study" id="case-football">
+            <div>
+              <p class="eyebrow">Forecasting · Python</p>
+              <h3>Football match outcome predictor</h3>
+            </div>
+            <div>
+              <p>
+                A small web app calculates match outcome probabilities from
+                historical home and away performance. Recency-weighted statistics
+                give more influence to recent matches than older results.
+              </p>
+              <p>
+                The app covers more than 200 teams across 11 leagues and connects
+                the analysis to an interactive way to explore predictions.
+              </p>
+              <a class="back-link" href="#work">Back to projects ↑</a>
+            </div>
+          </article>
+
+          <article class="case-study" id="case-fraud">
+            <div>
+              <p class="eyebrow">Machine learning · Python</p>
+              <h3>Fraud transaction detection</h3>
+            </div>
+            <div>
+              <p>
+                With fraud representing a very small share of transactions, this
+                project focuses on data preparation and evaluation for an
+                imbalanced classification problem. Balanced training samples and
+                repeated resampling help compare model performance more carefully
+                than accuracy alone.
+              </p>
+              <p>
+                A Random Forest is evaluated across five resamples to examine how
+                consistently it identifies potential fraudulent transactions.
+              </p>
+              <a class="back-link" href="#work">Back to projects ↑</a>
+            </div>
+          </article>
+
+          <article class="case-study" id="case-sentiment">
+            <div>
+              <p class="eyebrow">NLP · Python</p>
+              <h3>Movie review sentiment analysis</h3>
+            </div>
+            <div>
+              <p>
+                This project classifies IMDB movie reviews as positive or
+                negative. It transforms review text into TF-IDF features and
+                compares Logistic Regression with Complement Naive Bayes.
+              </p>
+              <p>
+                Precision, recall, and F1 provide a more useful view of
+                classification performance than accuracy by itself.
+              </p>
+              <a class="back-link" href="#work">Back to projects ↑</a>
+            </div>
+          </article>
+
+          <article class="case-study" id="case-house-prices">
+            <div>
+              <p class="eyebrow">Regression · Python</p>
+              <h3>House price prediction</h3>
+            </div>
+            <div>
+              <p>
+                This project compares Linear Regression, Gradient Boosting, and
+                Random Forest models using housing features that describe
+                properties and their locations. The comparison tests whether
+                greater model complexity improves predictions on this dataset.
+              </p>
+              <a class="back-link" href="#work">Back to projects ↑</a>
+            </div>
+          </article>
+
+          <article class="case-study" id="case-iris">
+            <div>
+              <p class="eyebrow">Classification · Python</p>
+              <h3>Iris flower classification</h3>
+            </div>
+            <div>
+              <p>
+                Decision Tree, Logistic Regression, and SVM models are compared
+                on the Iris dataset. A tuning pass checks whether a more complex
+                configuration improves results over a simpler model.
+              </p>
+              <a class="back-link" href="#work">Back to projects ↑</a>
+            </div>
+          </article>
+
+          <article class="case-study" id="case-chain-ladder-r">
+            <div>
+              <p class="eyebrow">Actuarial · R</p>
+              <h3>Claims reserving in R</h3>
+            </div>
+            <div>
+              <p>
+                The R implementation applies the same chain ladder reserving
+                method to claims development data. It provides a companion
+                implementation to compare with the Python version.
+              </p>
+              <a class="back-link" href="#work">Back to projects ↑</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="about">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Background</p>
+            <h2>About</h2>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              I’m a Nairobi-based data scientist with experience spanning
+              freelance analytics, actuarial consulting, insurance finance, and
+              research. I have worked with teams at Pula Advisors, Lepton
+              Actuarial &amp; Consulting, UAP Old Mutual, and InfoTrak Research.
+            </p>
+            <p>
+              My actuarial background shapes how I approach data science:
+              define the question, validate the inputs, test the model, and
+              explain the result in terms people can use. I enjoy collaborating
+              with cross-functional teams and translating technical findings
+              into clear next steps.
+            </p>
+            <p>
+              I hold a Bachelor of Science in Actuarial Science from Dedan
+              Kimathi University of Technology and completed Data Science and
+              Machine Learning studies with WorldQuant University.
+            </p>
+          </div>
+
+          <div class="skills-list">
+            <div class="skill-group">
+              <h3>Programming and analysis</h3>
+              <p>Python, SQL, R, pandas, NumPy, scikit-learn</p>
+            </div>
+            <div class="skill-group">
+              <h3>Machine learning and statistics</h3>
+              <p>Predictive modeling, classification, regression, time series, NLP, actuarial modeling</p>
+            </div>
+            <div class="skill-group">
+              <h3>Data platforms and visualization</h3>
+              <p>BigQuery, Looker, Power BI, Tableau, Matplotlib, Seaborn</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="wrap footer-content">
+      <p>Based in Nairobi, Kenya. Available for data science and analytics work.</p>
+      <div class="footer-links">
+        <a href="mailto:gertrudemunyao@gmail.com">Email</a>
+        <a href="https://github.com/MunyaoG" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
