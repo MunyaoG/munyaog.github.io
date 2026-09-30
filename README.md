@@ -72,7 +72,7 @@
     }
 
     .wrap {
-      width: 100%;
+      width: 95%;
       margin-inline: auto;
       padding-inline: clamp(16px, 4vw, 48px);
     }
@@ -237,23 +237,13 @@
     }
 
     .section-heading {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
+      display: block;
       margin-bottom: 32px;
     }
 
-    .section-heading h2 {
-      margin: 8px 0 0;
-      font-size: 2rem;
-    }
-
-    .section-heading p {
+    .section-heading > p {
       max-width: 56ch;
-      margin: 0;
-      color: var(--muted);
+      margin-top: 16px;
     }
 
     .project-grid {
@@ -273,7 +263,8 @@
 
     .project-card h3 {
       margin: 12px 0 8px;
-      font-size: 1.2rem;
+      font-size: 1.05rem;
+      white-space: nowrap;
     }
 
     .project-card p {
@@ -445,6 +436,11 @@
       .hero h1 {
         font-size: 1.75rem;
       }
+
+      .project-card h3 {
+        white-space: normal;
+        font-size: 1.2rem;
+      }
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -476,7 +472,6 @@
       <div class="nav-links">
         <a href="my-projects">Projects</a>
         <a href="about-me">About</a>
-        <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
@@ -497,8 +492,8 @@
             validation to communicating findings clearly to non-technical teams.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#work">Explore projects</a>
-            <a class="button" href="mailto:gertrudemunyao@gmail.com">Get in touch</a>
+            <a class="button primary" href="my-projects">Explore projects</a>
+            <a class="button" href="https://www.linkedin.com/in/gertrude-munyao-5137a01b9/">Get in touch</a>
           </div>
         </div>
 
@@ -527,7 +522,7 @@
             <p class="eyebrow">Selected work</p>
             <h2>Projects</h2>
           </div>
-          <p>
+          <p class="muted">
             Applied projects across healthcare, actuarial analysis, machine
             learning, and forecasting. Each project links to its case study and
             source repository.
@@ -543,7 +538,7 @@
               and selected health services against population and target ratios.
             </p>
             <div class="project-links">
-              <a href="https://munyaog.github.io/projects/nairobi-healthcare-access/">Case study</a>
+              <a href="projects/nairobi-healthcare-access/">Case study</a>
               <a href="https://github.com/MunyaoG/healthcare-gaps-analysis-python">GitHub repo</a>
             </div>
           </article>
@@ -562,7 +557,7 @@
           </article>
 
           <article class="project-card">
-            <span class="project-type">Mobility · Time series</span>
+            <span class="project-type">Mobility · Time series · Python</span>
             <h3>EV battery performance analysis</h3>
             <p>
               Analyzed motorcycle battery swap and telemetry data to identify
@@ -575,7 +570,7 @@
           </article>
 
           <article class="project-card">
-            <span class="project-type">Forecasting · Python</span>
+            <span class="project-type">Sports · ML · Python</span>
             <h3>Football match outcome predictor</h3>
             <p>
               Created a web app that uses recency-weighted historical performance
@@ -584,58 +579,6 @@
             <div class="project-links">
               <a href="#case-football">Case study</a>
               <a href="https://github.com/MunyaoG/sports-match-outcome-prediction">GitHub repo</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <span class="project-type">Machine learning · Python</span>
-            <h3>Fraud transaction detection</h3>
-            <p>
-              Prepared highly imbalanced transaction data and evaluated a
-              Random Forest approach to detecting potential fraud.
-            </p>
-            <div class="project-links">
-              <a href="#case-fraud">Case study</a>
-              <a href="https://github.com/MunyaoG/complex-data-manipulation-model-fitting-and-evaluation">GitHub repo</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <span class="project-type">NLP · Python</span>
-            <h3>Movie review sentiment analysis</h3>
-            <p>
-              Compared text classification methods on IMDB reviews using TF-IDF
-              features and standard classification metrics.
-            </p>
-            <div class="project-links">
-              <a href="#case-sentiment">Case study</a>
-              <a href="https://github.com/MunyaoG/nlp-classification-models">GitHub repo</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <span class="project-type">Regression · Python</span>
-            <h3>House price prediction</h3>
-            <p>
-              Compared linear and tree-based regression models on structural and
-              location features to predict house prices.
-            </p>
-            <div class="project-links">
-              <a href="#case-house-prices">Case study</a>
-              <a href="https://github.com/MunyaoG/regression-models">GitHub repo</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <span class="project-type">Classification · Python</span>
-            <h3>Iris flower classification</h3>
-            <p>
-              Compared Decision Tree, Logistic Regression, and SVM models, then
-              checked whether tuning improved generalization.
-            </p>
-            <div class="project-links">
-              <a href="#case-iris">Case study</a>
-              <a href="https://github.com/MunyaoG/classification-models">GitHub repo</a>
             </div>
           </article>
 
@@ -654,170 +597,6 @@
         </div>
       </div>
     </section>
-
-    <section class="content-section" aria-labelledby="case-studies-title">
-      <div class="wrap">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Methods and context</p>
-            <h2 id="case-studies-title">Project case studies</h2>
-          </div>
-          <p>
-            A closer look at the questions, methods, and practical takeaways
-            behind selected projects.
-          </p>
-        </div>
-
-        <div class="case-list">
-          <article class="case-study" id="case-chain-ladder-python">
-            <div>
-              <p class="eyebrow">Actuarial · Python</p>
-              <h3>Claims reserving with chain ladder</h3>
-            </div>
-            <div>
-              <p>
-                This project estimates future claim liabilities from historical
-                payment development. It builds a development triangle from raw
-                payment data, derives loss development factors, and applies the
-                chain ladder method to project ultimate losses.
-              </p>
-              <p>
-                The calculations include reconciliation checks against the source
-                payment data before projections are made.
-              </p>
-              <a class="back-link" href="#work">Back to projects ↑</a>
-            </div>
-          </article>
-
-          <article class="case-study" id="case-ev-batteries">
-            <div>
-              <p class="eyebrow">Mobility · Python</p>
-              <h3>EV battery performance analysis</h3>
-            </div>
-            <div>
-              <p>
-                This analysis uses battery swap and telemetry data to investigate
-                changes in battery performance across an electric motorcycle
-                fleet. Regression analysis examined factors associated with lower
-                usage, including charged capacity, alarm flags, and maximum
-                charge current.
-              </p>
-              <p>
-                The project also applies time-series forecasting to estimate
-                future fleet usage and help translate data patterns into
-                maintenance questions.
-              </p>
-              <a class="back-link" href="#work">Back to projects ↑</a>
-            </div>
-          </article>
-
-          <article class="case-study" id="case-football">
-            <div>
-              <p class="eyebrow">Forecasting · Python</p>
-              <h3>Football match outcome predictor</h3>
-            </div>
-            <div>
-              <p>
-                A small web app calculates match outcome probabilities from
-                historical home and away performance. Recency-weighted statistics
-                give more influence to recent matches than older results.
-              </p>
-              <p>
-                The app covers more than 200 teams across 11 leagues and connects
-                the analysis to an interactive way to explore predictions.
-              </p>
-              <a class="back-link" href="#work">Back to projects ↑</a>
-            </div>
-          </article>
-
-          <article class="case-study" id="case-fraud">
-            <div>
-              <p class="eyebrow">Machine learning · Python</p>
-              <h3>Fraud transaction detection</h3>
-            </div>
-            <div>
-              <p>
-                With fraud representing a very small share of transactions, this
-                project focuses on data preparation and evaluation for an
-                imbalanced classification problem. Balanced training samples and
-                repeated resampling help compare model performance more carefully
-                than accuracy alone.
-              </p>
-              <p>
-                A Random Forest is evaluated across five resamples to examine how
-                consistently it identifies potential fraudulent transactions.
-              </p>
-              <a class="back-link" href="#work">Back to projects ↑</a>
-            </div>
-          </article>
-
-          <article class="case-study" id="case-sentiment">
-            <div>
-              <p class="eyebrow">NLP · Python</p>
-              <h3>Movie review sentiment analysis</h3>
-            </div>
-            <div>
-              <p>
-                This project classifies IMDB movie reviews as positive or
-                negative. It transforms review text into TF-IDF features and
-                compares Logistic Regression with Complement Naive Bayes.
-              </p>
-              <p>
-                Precision, recall, and F1 provide a more useful view of
-                classification performance than accuracy by itself.
-              </p>
-              <a class="back-link" href="#work">Back to projects ↑</a>
-            </div>
-          </article>
-
-          <article class="case-study" id="case-house-prices">
-            <div>
-              <p class="eyebrow">Regression · Python</p>
-              <h3>House price prediction</h3>
-            </div>
-            <div>
-              <p>
-                This project compares Linear Regression, Gradient Boosting, and
-                Random Forest models using housing features that describe
-                properties and their locations. The comparison tests whether
-                greater model complexity improves predictions on this dataset.
-              </p>
-              <a class="back-link" href="#work">Back to projects ↑</a>
-            </div>
-          </article>
-
-          <article class="case-study" id="case-iris">
-            <div>
-              <p class="eyebrow">Classification · Python</p>
-              <h3>Iris flower classification</h3>
-            </div>
-            <div>
-              <p>
-                Decision Tree, Logistic Regression, and SVM models are compared
-                on the Iris dataset. A tuning pass checks whether a more complex
-                configuration improves results over a simpler model.
-              </p>
-              <a class="back-link" href="#work">Back to projects ↑</a>
-            </div>
-          </article>
-
-          <article class="case-study" id="case-chain-ladder-r">
-            <div>
-              <p class="eyebrow">Actuarial · R</p>
-              <h3>Claims reserving in R</h3>
-            </div>
-            <div>
-              <p>
-                The R implementation applies the same chain ladder reserving
-                method to claims development data. It provides a companion
-                implementation to compare with the Python version.
-              </p>
-              <a class="back-link" href="#work">Back to projects ↑</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
     
   </main>
 
@@ -825,7 +604,7 @@
     <div class="wrap footer-content">
       <p>Based in Nairobi, Kenya. Available for data science and analytics work.</p>
       <div class="footer-links">
-        <a href="mailto:gertrudemunyao@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/gertrude-munyao-5137a01b9/">LinkedIn</a>
         <a href="https://github.com/MunyaoG" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </div>
