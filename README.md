@@ -19,7 +19,6 @@
       --gold: #d8b63f;
       --coral: #e07151;
       --mint: #75cbb3;
-      --content-width: 1160px;
     }
 
     * {
