@@ -73,9 +73,9 @@
 
     .wrap {
       width: 95%;
-      max-width: 12880;
+      max-width: 1600px;
       margin-inline: auto;
-      padding-inline: clamp(16px, 4vw, 48px);
+      padding-inline: 0;
     }
 
     .skip-link {
