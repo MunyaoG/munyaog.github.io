@@ -1,72 +1,133 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About Me</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <nav aria-label="Main navigation">
-    <div class="wrap">
-      <a class="brand" href="health-analysis.html#top">Gertrude Munyao</a>
-      <div class="nav-links">
-        <a href="health-analysis.html#work">Projects</a>
-        <a href="about-page.html" aria-current="page">About</a>
-        <a href="health-analysis.html#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Me | Gertrude Munyao</title>
 
-  <main>
-    <section class="content-section" id="about">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav aria-label="Main navigation">
       <div class="wrap">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Background</p>
-            <h1>About</h1>
-          </div>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-copy">
-            <p>
-              I’m a Nairobi-based data scientist with experience spanning
-              freelance analytics, actuarial consulting, insurance finance, and
-              research. I have worked with teams at Pula Advisors, Lepton
-              Actuarial &amp; Consulting, UAP Old Mutual, and InfoTrak Research.
-            </p>
-            <p>
-              My actuarial background shapes how I approach data science:
-              define the question, validate the inputs, test the model, and
-              explain the result in terms people can use. I enjoy collaborating
-              with cross-functional teams and translating technical findings
-              into clear next steps.
-            </p>
-            <p>
-              I hold a Bachelor of Science in Actuarial Science from Dedan
-              Kimathi University of Technology and completed Data Science and
-              Machine Learning studies with WorldQuant University.
-            </p>
-          </div>
-
-          <div class="skills-list">
-            <div class="skill-group">
-              <h2>Programming and analysis</h2>
-              <p>Python, SQL, R, pandas, NumPy, scikit-learn</p>
-            </div>
-            <div class="skill-group">
-              <h2>Machine learning and statistics</h2>
-              <p>Predictive modeling, classification, regression, time series, NLP, actuarial modeling</p>
-            </div>
-            <div class="skill-group">
-              <h2>Data platforms and visualization</h2>
-              <p>BigQuery, Looker, Power BI, Tableau, Matplotlib, Seaborn</p>
-            </div>
-          </div>
+        <a class="brand" href="index.html">Gertrude Munyao</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="my-projects.html">Projects</a>
         </div>
       </div>
-    </section>
-  </main>
-</body>
+    </nav>
+
+    <main>
+      <section class="content-section" id="about">
+        <div class="wrap">
+          <div class="about-grid">
+            <div class="about-intro">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Background</p>
+                  <h1 style="font-size: 2rem">About</h1>
+                </div>
+              </div>
+
+              <div class="about-copy">
+                <p class="hero-copy">
+                  I'm a Nairobi-based data scientist with
+                  <strong
+                    >7+ years of experience building predictive models, analytics, and dashboards across diverse
+                    industries; financial services, insurtech, market research, iGaming, sports, mobility, and AI
+                    development</strong
+                  >. I also work as an <strong>independent consultant</strong>, taking on data science and BI projects
+                  end to end, from scoping and modelling to delivery and handover.
+                </p>
+                <p class="hero-copy">
+                  My approach is strategic: define the question, validate the data, build and test the model, and
+                  explain the result in terms people can act on. <strong>I trained as an actuary,</strong> which gave me
+                  a rigorous grounding in <strong>statistics, risk, and model validation</strong>, and I bring that
+                  discipline to every data science problem. I enjoy working with cross-functional teams and turning
+                  technical findings into clear next steps.
+                </p>
+              </div>
+            </div>
+
+            <section class="capabilities" aria-labelledby="capabilities-heading">
+              <p class="eyebrow">Expertise</p>
+              <h2 id="capabilities-heading" style="font-size: 2rem">What I do</h2>
+              <ul class="capability-list">
+                <li style="font-size: 1rem">
+                  <strong>Predictive modelling</strong>
+                  Classification, regression, and time series, from problem framing and feature engineering through
+                  validation and handover.
+                </li>
+                <li style="font-size: 1rem">
+                  <strong>Machine learning and deep learning</strong>
+                  Scikit-learn and PyTorch, including GPU-accelerated training.
+                </li>
+                <li style="font-size: 1rem">
+                  <strong>Natural language processing</strong>
+                  Text analysis and classification.
+                </li>
+                <li style="font-size: 1rem">
+                  <strong>Dashboards and BI</strong>
+                  Power BI, Tableau, and Looker, designed around decisions rather than just charts.
+                </li>
+                <li style="font-size: 1rem">
+                  <strong>Data analysis and engineering</strong>
+                  SQL and BigQuery on GCP, data cleaning and reconciliation, version control with Git, and Agile
+                  delivery.
+                </li>
+                <li style="font-size: 1rem">
+                  <strong>AI evaluation</strong>
+                  Writing and reviewing tasks, building rubrics, and debugging evaluator schemas for AI agent
+                  evaluation.
+                </li>
+                <li style="font-size: 1rem">
+                  <strong>Statistical and risk modelling</strong>
+                  Pricing and risk analytics, drawing on my actuarial training.
+                </li>
+                <li style="font-size: 1rem">
+                  <strong>Communication</strong>
+                  Documentation and technical summaries that non-technical stakeholders can act on.
+                </li>
+              </ul>
+            </section>
+
+            <section class="skills" aria-labelledby="skills-heading">
+              <h2 id="skills-heading" style="font-size: 2rem">Skills</h2>
+              <div class="skills-list">
+                <div class="skill-group">
+                  <h3>Programming and analysis</h3>
+                  <p>Python, SQL, R, pandas, NumPy, scikit-learn</p>
+                </div>
+                <div class="skill-group">
+                  <h3>Machine learning and statistics</h3>
+                  <p>Predictive modeling, classification, regression, time series, NLP, actuarial modeling</p>
+                </div>
+                <div class="skill-group">
+                  <h3>Data platforms and visualization</h3>
+                  <p>BigQuery, Looker, Power BI, Tableau, Matplotlib, Seaborn</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="education" aria-labelledby="education-heading">
+              <h2 id="education-heading" style="font-size: 2rem">Education</h2>
+              <ul class="education-list">
+                <li>
+                  <strong>Data Science and Machine Learning</strong>
+                  <strong>BSc Actuarial Science</strong>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
