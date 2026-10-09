@@ -1,1 +1,386 @@
-# coming soon
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EV Motorcycle Battery Analysis | Gertrude Munyao</title>
+  <meta name="description" content="Finding underperforming batteries in an EV motorcycle swap fleet and forecasting usage with regression and ARIMA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav aria-label="Primary">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Gertrude Munyao</a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#recommendations">Recommendations</a>
+        <a href="#next">Next steps</a>
+        <a href="../my-projects.html">All projects</a>
+        <a href="../index.html">Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Case study · Fleet analytics</p>
+          <h1>Electric Vehicles Battery Analysis</h1>
+          <p class="hero-copy">
+            An EV motorcycle fleet runs on swappable batteries. Some of them quietly underperform.
+            This project uses <strong>swap records and battery telemetry</strong> to flag the weak ones,
+            explain what drives low usage, and <strong>forecast average usage</strong> for the next ten months,
+            so a maintenance team knows where to look first.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://github.com/MunyaoG/EV-Motorcycles-Battery-Data-Analysis">View on GitHub</a>
+            <a class="button" href="EV-Battery-Analysis-Presentation.pdf">Read the slide deck</a>
+          </div>
+        </div>
+
+        <aside class="impact" aria-label="Headline results">
+          <h2>Headline results</h2>
+          <div class="impact-item">
+            <span class="mono">22 batteries · 1.36%</span>
+            <p>Flagged as low-usage (z-score below −2)</p>
+          </div>
+          <div class="impact-item">
+            <span class="mono">75 batteries · 4.64%</span>
+            <p>Flagged as fast-declining in average usage time</p>
+          </div>
+          <div class="impact-item">
+            <span class="mono">MSE 1.35</span>
+            <p>Regression model on held-out test data</p>
+          </div>
+          <div class="impact-item">
+            <span class="mono">MAE 4.34</span>
+            <p>ARIMA forecast of average usage hours</p>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="content-section" id="overview">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Overview</p>
+          <h2>The problem, the data, the goal</h2>
+        </div>
+        <div class="case-list">
+          <article class="case-study">
+            <div>
+              <p class="project-type">The question</p>
+              <h3>Which batteries are underperforming?</h3>
+            </div>
+            <div>
+              <p>
+                In a battery-swap fleet, usage time between swaps is a practical proxy for battery health.
+                A battery that needs swapping much sooner than its peers costs riders time and costs the
+                operator money. The goal was to find those batteries, understand why they behave differently,
+                and look ahead.
+              </p>
+              <ul>
+                <li>Identify batteries with low usage time</li>
+                <li>Use battery features to predict future usage patterns</li>
+                <li>Apply time series analysis to forecast battery life</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="case-study">
+            <div>
+              <p class="project-type">The data</p>
+              <h3>Two sources, joined</h3>
+            </div>
+            <div>
+              <p>
+                <strong>Swap data</strong> records each battery swap, including swap-in and swap-out times.
+                <strong>Battery features data</strong> describes how each battery was operating: capacity,
+                cycle count, state of charge (SOC), mileage, and temperature, among others.
+              </p>
+              <p>
+                Usage time between swaps was derived from the swap records, then grouped by battery ID and month.
+                The usage distribution is heavily right-skewed: most batteries last 0 to 30 hours before needing
+                a recharge, with a small number far above that.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="method">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Method</p>
+          <h2>From raw swaps to a forecast</h2>
+        </div>
+        <div class="case-list">
+          <article class="case-study">
+            <div>
+              <p class="project-type">Step 1</p>
+              <h3>Flag low-usage batteries</h3>
+            </div>
+            <div>
+              <p>
+                Average usage time was computed per battery and standardised as a z-score. Batteries more than
+                two standard deviations below the fleet average were flagged as low-usage. A separate check
+                flagged batteries whose monthly usage was trending down quickly.
+              </p>
+            </div>
+          </article>
+
+          <article class="case-study">
+            <div>
+              <p class="project-type">Step 2</p>
+              <h3>Integrate features</h3>
+            </div>
+            <div>
+              <p>
+                Swap data was merged with battery feature data so that usage time could be examined alongside
+                the operating conditions behind it.
+              </p>
+            </div>
+          </article>
+
+          <article class="case-study">
+            <div>
+              <p class="project-type">Step 3</p>
+              <h3>Model usage time</h3>
+            </div>
+            <div>
+              <p>
+                Regression models predicted expected average usage time between swaps from these features,
+                with a train/test split for validation. The notebook also explores clustering (KMeans).
+              </p>
+              <ul class="tag-list" aria-label="Model inputs">
+                <li>Board surface temperature</li>
+                <li>Internal temperature</li>
+                <li>Cell series number</li>
+                <li>Mileage</li>
+                <li>Number of cycles</li>
+                <li>Battery SOC</li>
+                <li>Average speed</li>
+                <li>Total current</li>
+                <li>Total discharged capacity</li>
+                <li>Total voltage</li>
+                <li>Alarm flag</li>
+                <li>Battery capacity</li>
+                <li>Charge protect voltage</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="case-study">
+            <div>
+              <p class="project-type">Step 4</p>
+              <h3>Forecast with ARIMA</h3>
+            </div>
+            <div>
+              <p>
+                An ARIMA model captured the trend in average battery usage hours and produced a
+                ten-month forecast, compared against historical values to judge reliability.
+                The forecast is saved as a CSV in the repository.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="results">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Results</p>
+          <h2>What the analysis found</h2>
+          <p class="figure-intro">
+            Out of the fleet, <strong>22 batteries (1.36%)</strong> had a z-score below −2, meaning an unusually
+            low average usage time, and <strong>75 batteries (4.64%)</strong> showed a fast-declining trend.
+          </p>
+        </div>
+
+        <div class="figure-grid">
+          <figure class="figure">
+            <img src="images/zscore-all.jpg" width="999" height="521" loading="lazy"
+                 alt="Bar chart of usage z-scores for every battery, with a shaded normal range from −2 to 2 and a handful of bars dipping below −2 in red.">
+            <figcaption>Usage z-score for every battery. The shaded band is the normal range; red spikes fall below −2.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="images/zscore-low.jpg" width="565" height="513" loading="lazy"
+                 alt="Bar chart of the 22 flagged batteries, each with a z-score between about −2 and −6.">
+            <figcaption>The 22 flagged batteries, ranging from just under −2 to about −6.</figcaption>
+          </figure>
+        </div>
+
+        <div class="case-list" style="margin-top: 32px;">
+          <article class="case-study">
+            <div>
+              <p class="project-type">Drivers</p>
+              <h3>What separates low-usage batteries</h3>
+            </div>
+            <div>
+              <p>Comparing flagged batteries with the rest of the fleet, three features stood out:</p>
+              <ul>
+                <li><strong>Low total charged capacity</strong></li>
+                <li><strong>Low alarm-flag values</strong> (the AlarmDesc and AlarmFlag fields)</li>
+                <li><strong>Low maximum charge current</strong></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="case-study">
+            <div>
+              <p class="project-type">Model quality</p>
+              <h3>Prediction and forecast error</h3>
+            </div>
+            <div>
+              <p>
+                The regression model reached an <strong>MSE of 1.35</strong> on test data. The ARIMA forecast
+                reached a <strong>MAE of 4.34</strong> against historical values. The ten-month forecast
+                of average usage hours is available as a CSV in the repository.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="figure-grid even" style="margin-top: 32px;">
+          <figure class="figure">
+            <img src="images/usage-hist.jpg" width="592" height="433" loading="lazy"
+                 alt="Histogram of battery usage hours, heavily skewed with most values near zero to 25 hours and a long thin tail.">
+            <figcaption>Distribution of usage hours, all records.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="images/usage-hist-trimmed.jpg" width="578" height="433" loading="lazy"
+                 alt="Histogram of battery usage hours with outliers removed, showing most batteries between 0 and 30 hours.">
+            <figcaption>The same distribution without outliers. Most batteries last 0 to 30 hours between recharges; the extreme cases above 50 hours may simply be idle batteries.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="recommendations">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Recommendations</p>
+          <h2>What the maintenance team can do</h2>
+        </div>
+        <div class="case-list">
+          <article class="case-study">
+            <div>
+              <p class="project-type">Charging</p>
+              <h3>Check for overcharging</h3>
+            </div>
+            <div>
+              <p>
+                Flagged batteries had low charged capacity, which may point to overcharging affecting
+                performance. This is a hypothesis worth testing, not a confirmed cause. The team should make sure
+                batteries are charged within their specific limits.
+              </p>
+            </div>
+          </article>
+          <article class="case-study">
+            <div>
+              <p class="project-type">Monitoring</p>
+              <h3>Act on alarm flags early</h3>
+            </div>
+            <div>
+              <p>Pay closer attention to alarm flags and resolve issues as soon as they appear.</p>
+            </div>
+          </article>
+          <article class="case-study">
+            <div>
+              <p class="project-type">Hardware</p>
+              <h3>Match chargers to batteries</h3>
+            </div>
+            <div>
+              <p>
+                Keep each charging system's maximum current rating at or below the battery's recommended
+                charge current.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="next">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Limitations and next steps</p>
+          <h2>Where I would take it next</h2>
+        </div>
+        <div class="case-list">
+          <article class="case-study">
+            <div>
+              <p class="project-type">Caveats</p>
+              <h3>What to keep in mind</h3>
+            </div>
+            <div>
+              <ul>
+                <li>Very long usage times can reflect idle batteries rather than healthy ones.</li>
+                <li>The data was aggregated, which limits how reliable the models can be.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="case-study">
+            <div>
+              <p class="project-type">Next steps</p>
+              <h3>Improving the models</h3>
+            </div>
+            <div>
+              <ul>
+                <li>Use more granular data to improve reliability</li>
+                <li>Run feature importance analysis and feature selection</li>
+                <li>Extend the time series model to predict long-term battery life</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="stack">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Tools and outputs</p>
+          <h2>What is in the repository</h2>
+        </div>
+        <div class="skills-list">
+          <div class="skill-group">
+            <h3>Stack</h3>
+            <p>Python, pandas, NumPy, SciPy, scikit-learn, statsmodels (ARIMA), matplotlib, Jupyter</p>
+          </div>
+          <div class="skill-group">
+            <h3>Analysis</h3>
+            <p>Main notebook covering extraction, cleaning, EDA, modelling and forecasting, plus a script version and a slide deck for non-technical readers</p>
+          </div>
+          <div class="skill-group">
+            <h3>Outputs</h3>
+            <p>CSVs of low-usage batteries, fast-declining batteries, and the ten-month predicted average usage</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-content">
+      <p>© 2026 Gertrude Munyao · Data Scientist, Nairobi</p>
+      <p>Based in Nairobi, Kenya. Available for data science and analytics work.</p>
+      <div class="footer-links">        
+        <a href="https://www.linkedin.com/in/gertrude-munyao-5137a01b9/">LinkedIn</a>
+        <a href="https://github.com/MunyaoG" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../my-projects.html">Back to projects</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
