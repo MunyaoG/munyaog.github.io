@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img">
+  <title>Microsoft Excel</title>
+  <path fill="#21A366" d="M52 14h59a5 5 0 0 1 5 5v90a5 5 0 0 1-5 5H52z"/>
+  <path fill="#107C41" d="M52 14h36v100H52z"/>
+  <path fill="#185C37" d="M52 14h18v100H52z"/>
+  <path fill="#107C41" d="M13 30a5 5 0 0 1 4-5l57-11v100l-57-11a5 5 0 0 1-4-5z"/>
+  <path fill="#fff" d="m29 48 10-1 9 16 9-18 11-1-14 25 15 26-11-1-10-18-10 16-10-1 15-23z"/>
+</svg>

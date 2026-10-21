@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img">
+  <title>Google Looker</title>
+  <circle cx="50" cy="72" r="25" fill="none" stroke="#4285F4" stroke-width="9"/>
+  <path d="M44 48 37 39" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <path d="M35 22a11 11 0 0 1 9 17l-7-5a3 3 0 0 0-5-5z" fill="#EA4335"/>
+  <path d="M44 39a11 11 0 0 1-12 5l2-8a3 3 0 0 0 4-4z" fill="#FBBC04"/>
+  <circle cx="50" cy="16" r="7" fill="none" stroke="#34A853" stroke-width="7"/>
+  <path d="m46 22-4 5" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+</svg>

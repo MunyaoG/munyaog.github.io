@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img">
+  <title>BigQuery</title>
+  <path fill="#4285F4" d="M64 9 108 34v48L64 107 20 82V34zm0 13L32 40v36l32 18 32-18V40z"/>
+  <path fill="#34A853" d="M54 45h10v30H54z"/>
+  <path fill="#FBBC04" d="M70 36h10v39H70z"/>
+  <path fill="#EA4335" d="M86 52h10v23H86z"/>
+</svg>

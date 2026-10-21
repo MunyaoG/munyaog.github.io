@@ -21,7 +21,8 @@
   <body>
     <nav aria-label="Main navigation">
       <div class="wrap">
-        <a class="brand" href="health-analysis.html#top">Gertrude Munyao</a>
+        <a class="brand" href="index.html">Gertrude Munyao</a>
+        <p class="eyebrow">Data Scientist · AI/ML · Nairobi, Kenya</p>
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="about-me.html">About Me</a>
@@ -34,70 +35,44 @@
         <div class="wrap">
           <div class="section-heading">
             <div>
-              <h1 style="color: gold">My Projects</h1>
+              <h1 class="accent-title">My Projects</h1>
             </div>
             <p class="hero-copy">
-              These are applied projects that start with a practical question and end with something a decision-maker
-              could use. They span healthcare access, actuarial, mobility analytics, iGaming, and sports forecasting,
-              and they draw on
-              <strong>Python, R, SQL, Tableau, Looker, Power BI, and GCP</strong>, along with statistical modelling and
-              machine learning. Each project includes the problem, the approach, and the findings, with the full code in
-              a public repository so you can see how I work as well as what I found.
+              These are applied projects that start with a practical question and end with something a
+              decision-maker could use. They span healthcare access, actuarial, mobility, operations, iGaming,
+              and sports forecasting, and they draw on
+              <strong>Python, R, SQL, Tableau, Looker, Power BI, and GCP</strong>, along with statistical
+              modelling and machine learning. Projects link to source code, reports, dashboards, and case
+              studies where available.
             </p>
           </div>
 
           <div class="project-grid">
             <article class="project-card">
-              <span class="project-type">Healthcare · Python</span>
-              <h3>Mapping healthcare access gaps</h3>
-              <p>
-                Access to care varies widely across Nairobi, and averages hide where the shortfalls are. This project
-                compares sub-counties on facility access, bed availability, and selected health services, measured
-                against population size and recommended target ratios.
-              </p>
-              <p>The analysis highlights which areas are underserved and by how much <strong>several sub-counties fall
-                below the UN Department of Economic and Social Affairs SDG-recommended targets,</strong>
-                giving planners and health organisations an evidence base for prioritising resources.
-              </p>
-              <div class="project-links">
-                <a href="projects/nairobi-healthcare-access.html">Case study</a>
-                <a href="https://github.com/MunyaoG/healthcare-gaps-analysis-python">GitHub repo</a>
-              </div>
-            </article>
-
-            <article class="project-card">
-              <span class="project-type">Actuarial · Python</span>
-              <h3>Claims reserving with chain ladder</h3>
-              <p>
-                Insurers need to estimate what claims will ultimately cost before they are fully settled. Using payment
-                data, I built a claims development triangle, calculated loss development factors, and projected ultimate
-                losses with the chain ladder method. The project walks through each step of the reserving process, from
-                data preparation to the final reserve estimate, in clear, reproducible code.
-              </p>
-              <div class="project-links">
-                <a href="https://github.com/MunyaoG/liability-projection-in-python">GitHub repo</a>
-              </div>
-            </article>
-
-            <article class="project-card">
-              <span class="project-type">Mobility · Time series · Python</span>
+              <span class="project-type">Mobility · Time series · Python · GCP · BigQuery</span>
               <h3>EV battery performance analysis</h3>
               <p>
-                Electric vehicles are a cornerstone of cleaner transport globally. In East Africa, electric motorcycles
-                (boda bodas) are especially promising as public transport, carrying passengers across both busy urban
-                centres and rural areas where other options are limited. Their climate benefit, however, depends on how
-                sustainable they are, i.e. how long the batteries last and how well fleets are run.
+                Electric vehicles are a cornerstone of cleaner transport globally. In East Africa, electric
+                motorcycles (boda bodas) are especially promising as public transport, carrying passengers
+                across both busy urban centres and rural areas where other options are limited. Their climate
+                benefit, however, depends on how sustainable they are, i.e. how long the batteries last
+                and how well fleets are run.
               </p>
               <p>
-                I analysed battery swap and telemetry data to understand how batteries degrade with use, then built time
-                series forecasts of fleet usage.
+                I analysed battery swap and telemetry data to understand how batteries degrade with use, then
+                built time series forecasts of fleet usage.
                 <strong
-                  >findings on degradation patterns and usage trends show how operators could plan swap capacity,
-                  maintenance, and replacement more effectively. Longer battery life means fewer batteries manufactured
-                  and discarded, and better-planned swapping means less idle infrastructure, which makes electric
-                  mobility more economical and more sustainable.</strong
+                  >findings on degradation patterns and usage trends show how operators could plan swap
+                  capacity, maintenance, and replacement more effectively. Longer battery life means fewer
+                  batteries manufactured and discarded, and better-planned swapping means less idle
+                  infrastructure, which makes electric mobility more economical and more sustainable.</strong
                 >
               </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/python.svg" alt="Python" />
+                <img src="assets/logos/google-cloud.svg" alt="Google Cloud Platform" />
+                <img src="assets/logos/bigquery.svg" alt="BigQuery" />
+              </div>
               <div class="project-links">
                 <a href="projects/ev-battery-performance-analysis.html">Case study</a>
                 <a href="https://github.com/MunyaoG/EV-Motorcycles-Battery-Data-Analysis">GitHub repo</a>
@@ -105,13 +80,154 @@
             </article>
 
             <article class="project-card">
-              <span class="project-type">Sports · ML · Python</span>
+              <span class="project-type">Healthcare · Python</span>
+              <h3>Mapping healthcare access gaps</h3>
+              <p>
+                Access to care varies widely across Nairobi, and averages hide where the shortfalls are.
+                This project compares sub-counties on facility access, bed availability, and selected health
+                services, measured against population size and recommended target ratios.
+              </p>
+              <p>
+                The analysis highlights which areas are underserved and by how much
+                <strong
+                  >several sub-counties fall below the UN Department of Economic and Social Affairs
+                  SDG-recommended targets</strong
+                >,
+                giving planners and health organisations an evidence base for prioritising resources.
+              </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/python.svg" alt="Python" />
+              </div>
+              <div class="project-links">
+                <a href="projects/nairobi-healthcare-access.html">Case study</a>
+                <a href="https://github.com/MunyaoG/healthcare-gaps-analysis-python">GitHub repo</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <span class="project-type">Operations · SQL · Python · Excel</span>
+              <h3>Team Performance &amp; Insights</h3>
+              <p>
+                I analysed data from <strong>roughly 170,000 cases</strong> to assess an operations
+                team’s performance against its “instant service” promise. Using <strong>SQL</strong>,
+                I cleaned inconsistent timestamps, then measured backlog age, time to first review,
+                resolution time, reopen rates and agent throughput, and presented the results as a deck.
+                Cases entered the backlog within <strong>45 seconds</strong> and reviews took about
+                <strong>11 minutes</strong>, yet cases waited <strong>18 hours</strong> for a first review,
+                driving a <strong>72-hour</strong> average resolution time. The reopen rate was
+                <strong>31%</strong>, and resolution time worsened over time even as the resolution rate
+                improved.
+              </p>
+              <p>
+                My analysis identified <strong>six cases with 200+ hour backlog delays</strong> and
+                recommended <strong>fixing the first-review delay</strong> to improve resolution time and
+                reduce reopen rates.
+              </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/sql.svg" alt="SQL" />
+                <img src="assets/logos/python.svg" alt="Python" />
+                <img src="assets/logos/excel.svg" alt="Excel" />
+              </div>
+              <div class="project-links">
+                <a href="projects/Team%20Performance%20Analysis%20%26%20Recommendantions.pdf">
+                  View PDF report
+                </a>
+                <a href="projects/Team-Performance-Project-Queries.sql">View SQL queries</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <span class="project-type">iGaming · Tableau</span>
+              <h3>iGaming Dashboard</h3>
+              <p>
+                I built an interactive <strong>Tableau dashboard</strong> for an iGaming operator, tracking
+                <strong>active players, deposits and net gaming revenue (NGR)</strong> from February to April,
+                alongside the registration-to-deposit funnel, revenue by product and performance by market.
+              </p>
+              <p>
+                <strong>Active players grew from 3,663 to 4,092</strong> and deposits rose to
+                <strong>€2.27M</strong>, but NGR fell in April to <strong>€586K</strong>.
+                <strong>Casino generated about 75% of revenue</strong>, and
+                <strong>Sweden, Finland and Norway</strong> led the markets. Bonus spend was positively
+                correlated with NGR, turnover and active players. I also flagged
+                <strong>Malta and Hungary</strong> as loss-making markets with growth potential.
+              </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/tableau.svg" alt="Tableau" />
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://public.tableau.com/views/iGamingDashboard/Dashboard1?:language=en-GB&amp;:sid=&amp;:redirect=auth&amp;:display_count=n&amp;:origin=viz_share_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View dashboard</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card">
+              <span class="project-type">Mobility · Looker · GCP</span>
+              <h3>Ride-Hailing Dashboard</h3>
+              <p>
+                I built an interactive <strong>Looker Studio dashboard</strong> analysing ride-hailing
+                supply against demand for the week of <strong>7–13 November 2016</strong>. It tracks
+                searches, zero-car searches, coverage ratio and driver hours, with an hourly coverage
+                heatmap and filters for day, hour and coverage level.
+              </p>
+              <p>
+                Of <strong>7,047 searches</strong>, <strong>1,858 (26.4%)</strong> found no car, giving
+                an average coverage of <strong>74%</strong>. Coverage was weakest in the
+                <strong>early hours</strong> and dipped on <strong>11 November</strong>, when searches
+                peaked. Only <strong>24% of online hours</strong> (21,288 of 88,656) included a booking,
+                which suggests a
+                <strong>mismatch between when and where drivers are online and when demand occurs</strong>,
+                rather than a simple shortage of drivers.
+              </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/looker-studio.svg" alt="Looker" />
+                <img src="assets/logos/google-cloud.svg" alt="Google Cloud Platform" />
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://datastudio.google.com/reporting/c533dd17-061c-4fa8-85d5-b64051d76e69/page/p_zcm04hoxxd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View dashboard</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card">
+              <span class="project-type">Actuarial · Python</span>
+              <h3>Claims reserving with chain ladder</h3>
+              <p>
+                Insurers need to estimate what claims will ultimately cost before they are fully settled.
+                Using payment data, I built a claims development triangle, calculated loss development
+                factors, and projected ultimate losses with the chain ladder method. The project walks
+                through each step of the reserving process, from data preparation to the final reserve
+                estimate, in clear, reproducible code.
+              </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/python.svg" alt="Python" />
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/MunyaoG/liability-projection-in-python">GitHub repo</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <span class="project-type">Sports · ML · Python · SQL</span>
               <h3>Football match outcome predictor</h3>
               <p>
-                A web app that estimates match outcomes across leagues and teams. Instead of treating all history
-                equally, the model uses recency-weighted performance, so recent form counts for more than results from
-                seasons ago. It shows an end-to-end workflow from data and modelling through to a usable interface.
+                A web app that estimates match outcomes across leagues and teams. Instead of treating all
+                history equally, the model uses recency-weighted performance, so recent form counts for
+                more than results from seasons ago. It shows an end-to-end workflow from data and modelling
+                through to a usable interface.
               </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/python.svg" alt="Python" />
+                <img src="assets/logos/sql.svg" alt="SQL" />
+              </div>
               <div class="project-links">
                 <a href="https://github.com/MunyaoG/sports-match-outcome-prediction">GitHub repo</a>
               </div>
@@ -121,10 +237,14 @@
               <span class="project-type">Actuarial · R</span>
               <h3>Claims reserving in R</h3>
               <p>
-                A companion to the Python reserving project, implementing the same chain ladder approach in R. Having
-                both versions allows a direct comparison of the two workflows and shows the method working in either
-                language, which is useful for teams whose actuarial work is split between them.
+                A companion to the Python reserving project, implementing the same chain ladder approach
+                in R. Having both versions allows a direct comparison of the two workflows and shows the
+                method working in either language, which is useful for teams whose actuarial work is split
+                between them.
               </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/r.svg" alt="R" />
+              </div>
               <div class="project-links">
                 <a href="https://github.com/MunyaoG/liability-projection-in-R">GitHub repo</a>
               </div>
@@ -133,15 +253,16 @@
         </div>
       </section>
     </main>
-        <footer>
-    <div class="wrap footer-content">
-      <p>© 2026 Gertrude Munyao · Data Scientist, Nairobi</p>
-      <p>Based in Nairobi, Kenya. Available for data science and analytics work.</p>
-      <div class="footer-links">        
-        <a href="https://www.linkedin.com/in/gertrude-munyao-5137a01b9/">LinkedIn</a>
-        <a href="https://github.com/MunyaoG" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+    <footer>
+      <div class="wrap footer-content">
+        <p>© 2026 Gertrude Munyao · Data Scientist, Nairobi</p>
+        <p>Based in Nairobi, Kenya. Available for data science and analytics work.</p>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/gertrude-munyao-5137a01b9/">LinkedIn</a>
+          <a href="https://github.com/MunyaoG" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   </body>
 </html>

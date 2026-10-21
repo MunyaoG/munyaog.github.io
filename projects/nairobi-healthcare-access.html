@@ -1,333 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mapping Healthcare Access Gaps in Nairobi County — Gertrude</title>
-<style>
-  :root{
-    --ink:#1B2436;
-    --paper:#F6F4EF;
-    --paper-dim:#ECE9E1;
-    --line:#D8D3C6;
-    --accent:#2B3A67;
-    --accent-warm:#C97A3D;
-    --good:#3E7C59;
-    --bad:#B4482E;
-    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
-    --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
-  @font-face{font-family:"Source Serif 4";src:local("Source Serif 4");}
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--sans);
-    line-height:1.55;
-    overflow-x:hidden;
-  }
-  a{color:var(--accent);}
-  .wrap{width:92%;margin:0 auto;padding:0 32px;}
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapping Healthcare Access Gaps in Nairobi County — Gertrude</title>
+    <meta
+      name="description"
+      content="Facility-level analysis of healthcare access in Nairobi County using regional benchmarks."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="healthcare-page">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-  header.hero{
-    background:var(--ink);
-    color:var(--paper);
-    padding:72px 0 56px;
-  }
-  header.hero .kicker{
-    font-size:15px;
-    color:#A9B4CE;
-    margin:0 0 14px;
-  }
-  header.hero h1{
-    font-family:var(--serif);
-    font-weight:600;
-    font-size:clamp(28px,6vw,46px);
-    line-height:1.15;
-    margin:0 0 20px;
-  }
-  header.hero p.lede{
-    font-size:18px;
-    color:#D8DCE8;
-    margin:0 0 28px;
-  }
-  .meta-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:28px;
-    border-top:1px solid #384463;
-    padding-top:20px;
-    font-size:14px;
-    color:#B7BFD6;
-  }
-  .meta-row > div{max-width:100%;}
-  .meta-row strong{display:block;color:var(--paper);font-weight:600;font-size:14.5px;margin-bottom:2px;}
-
-  main{padding:56px 0 40px;}
-  section{margin-bottom:56px;}
-  h2{
-    font-family:var(--serif);
-    font-size:26px;
-    font-weight:600;
-    margin:0 0 18px;
-    padding-bottom:10px;
-    border-bottom:1px solid var(--line);
-  }
-  h3{font-size:17px;margin:28px 0 10px;font-weight:600;}
-  p{margin:0 0 14px;font-size:16px;}
-  ul{margin:0 0 16px;padding-left:20px;}
-  li{margin-bottom:8px;}
-
-  .stat-strip{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    margin:26px 0 30px;
-  }
-  .stat{background:var(--paper);padding:18px 16px;min-width:0;}
-  .stat .n{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--accent);line-height:1;}
-  .stat .l{font-size:13px;color:#5A5F6E;margin-top:6px;}
-
-  .charts{
-    display:grid;
-    grid-template-columns:1.1fr 1fr;
-    gap:28px;
-    align-items:start;
-    margin:8px 0 8px;
-  }
-  .chart-card{background:var(--paper-dim);border:1px solid var(--line);padding:18px;min-width:0;}
-  .chart-card svg{display:block;width:100%;height:auto;}
-   transform: translateY(-8px);
-
-  /* Tables scroll horizontally instead of breaking page width on narrow screens */
-  .table-scroll{
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    margin:14px 0 8px;
-  }
-  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0;}
-  .table-scroll table{width: max-content; min-width:540px;}
-  caption{text-align:left;font-size:13px;color:#5A5F6E;margin-bottom:6px;caption-side:top;}
-  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap;}
-  th{font-weight:600;color:#3A3F4E;background:var(--paper-dim);}
-  td.num, th.num{text-align:right;font-variant-numeric:tabular-nums;}
-  tr td.flag{color:var(--bad);font-weight:600;}
-
-  .rec-list{list-style:none;padding:0;margin:0;}
-  .rec-list li{
-    padding:14px 0 14px 0;
-    border-top:1px solid var(--line);
-    display:grid;
-    grid-template-columns:110px 1fr;
-    gap:16px;
-  }
-  .rec-list li:last-child{border-bottom:1px solid var(--line);}
-  .rec-list .region{font-weight:600;color:var(--accent);font-size:14.5px;}
-
-  .reflection{
-    background:var(--paper-dim);
-    border-left:3px solid var(--accent-warm);
-    padding:18px 22px;
-  }
-
-  footer{
-    border-top:1px solid var(--line);
-    padding:30px 0 60px;
-    font-size:13.5px;
-    color:#5A5F6E;
-  }
-  footer a{color:#5A5F6E;text-decoration:underline;}
-  footer h3{font-size:14px;margin:0 0 10px;color:var(--ink);}
-  footer ul{padding-left:18px;margin:0;}
-  footer li{margin-bottom:5px;}
-
-  .tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
-  .tools span{
-    font-size:13px;
-    background:var(--paper-dim);
-    border:1px solid var(--line);
-    padding:4px 10px;
-  }
-
-  @media (max-width:680px){
-    .charts{grid-template-columns:1fr;}
-    .stat-strip{grid-template-columns:1fr;}
-    header.hero{padding:52px 0 36px;}
-    .meta-row{gap:16px;padding-top:16px;}
-    section{margin-bottom:40px;}
-  }
-  @media (max-width:560px){
-    .rec-list li{grid-template-columns:1fr;gap:4px;}
-  }
-  @media (max-width:480px){
-    .wrap{padding:0 16px;}
-    header.hero p.lede{font-size:16px;}
-  }
-</style>
-</head>
-<body>
-
-<header class="hero">
-  <div class="wrap">
-    <a href="../index.html" style="color:#A9B4CE;font-size:14px;text-decoration:none;display:inline-block;margin-bottom:18px;">&larr; Back to portfolio</a>
-    <p class="kicker">Public Health &middot; Data Analysis</p>
-    <h1>Mapping healthcare access gaps in Nairobi County</h1>
-    <p class="lede">A facility-level analysis of Nairobi's health infrastructure against Universal Health Coverage and SDG 3 targets - identifying where the county is underserved and what it would take to close the gap.</p>
-    <div class="meta-row">
-      <div><strong>Role</strong>Independent Analysis</div>
-      <div><strong>Tools</strong>Python, Jupyter, pandas, matplotlib</div>
-      <div><strong>Data</strong>942 facility records, 2019 census</div>
-    </div>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <section>
-    <h2>Context</h2>
-    <p>SDG Target 3.8 calls for universal access to quality healthcare. I wanted to know how close Nairobi County actually is to that — not at the county level, where averages hide a lot, but region by region, facility by facility.</p>
-    <p>I combined the county's health facility registry with 2019 census sub-county population data, mapped every facility to one of ten regions, and benchmarked each region against WHO and county target ratios for facility density, hospital beds, and four specific services: inpatient/home-based care, childhood illness management, HIV treatment, and sexual and reproductive health.</p>
-  </section>
-
-  <section>
-    <h2>At a glance</h2>
-    <div class="stat-strip">
-      <div class="stat"><div class="n">900+</div><div class="l">registered facilities across Nairobi</div></div>
-      <div class="stat"><div class="n">19</div><div class="l">closed facilities — untapped capacity</div></div>
-      <div class="stat"><div class="n">70%</div><div class="l">of facilities are clinics or dispensaries</div></div>
-    </div>
-
-    <div class="charts">
-      <figure class="chart-card">
-        <svg viewBox="0 0 320 185" role="img" aria-label="Bar chart of facility types">
-          <text x="0" y="16" font-size="12" fill="#3A3F4E" font-family="IBM Plex Sans, sans-serif" font-weight="600">Facility types (top 10)</text>
-          <g font-family="IBM Plex Sans, sans-serif" font-size="8" fill="#3A3F4E">
-            <text x="0" y="37">Medical Clinic</text><rect x="60" y="28" width="205" height="12" fill="#2B3A67"/><text x="268" y="37" font-size="7">448</text>
-            <text x="0" y="52">Dispensary</text><rect x="60" y="43" width="87" height="12" fill="#2B3A67"/><text x="150" y="52" font-size="7">190</text>
-            <text x="0" y="67">Health Centre</text><rect x="60" y="58" width="40" height="12" fill="#2B3A67"/><text x="103" y="67" font-size="7">88</text>
-            <text x="0" y="82">VCT Centre</text><rect x="60" y="73" width="25" height="12" fill="#2B3A67"/><text x="88" y="82" font-size="7">54</text>
-            <text x="0" y="97">Other Hospital</text><rect x="60" y="88" width="18" height="12" fill="#2B3A67"/><text x="81" y="97" font-size="7">40</text>
-            <text x="0" y="112">Nursing Home</text><rect x="60" y="103" width="11" height="12" fill="#2B3A67"/><text x="74" y="112" font-size="7">25</text>
-            <text x="0" y="127">Maternity Home</text><rect x="60" y="118" width="6" height="12" fill="#2B3A67"/><text x="69" y="127" font-size="7">14</text>
-            <text x="0" y="142">Laboratory</text><rect x="60" y="133" width="5" height="12" fill="#2B3A67"/><text x="68" y="142" font-size="7">13</text>
-            <text x="0" y="157">Medical Centre</text><rect x="60" y="148" width="4" height="12" fill="#2B3A67"/><text x="67" y="157" font-size="7">12</text>
-            <text x="0" y="172">Dental Clinic</text><rect x="60" y="163" width="3" height="12" fill="#2B3A67"/><text x="65" y="172" font-size="7">10</text>
-          </g>
-        </svg>
-        <figcaption>Medical clinics and dispensaries dominate; smaller specialty facilities make up the long tail.</figcaption>
-      </figure>
-
-      <figure class="chart-card">
-        <svg viewBox="0 0 320 215" role="img" aria-label="Pie chart of facility operational status">
-          <text x="0" y="16" font-size="12" fill="#3A3F4E" font-family="IBM Plex Sans, sans-serif" font-weight="600">Operational status</text>
-
-          <g transform="translate(160,112)">
-            <circle cx="0" cy="0" r="80" fill="#2B3A67"/>
-            <path d="M0 0 L0 -80 A80 80 0 0 1 10.2 -79.3 Z" fill="#B4482E"/>
-            <path d="M0 0 L10.2 -79.3 A80 80 0 0 1 13.4 -79 Z" fill="#C97A3D"/>
-          </g>
-
-          <g font-family="IBM Plex Sans, sans-serif" font-size="9" fill="#3A3F4E" transform="translate(0,196)">
-            <rect x="0" y="0" width="10" height="10" fill="#2B3A67"/><text x="16" y="9">Operational — 97%</text>
-            <rect x="120" y="0" width="10" height="10" fill="#B4482E"/><text x="136" y="9">Closed — 2%</text>
-            <rect x="215" y="0" width="10" height="10" fill="#C97A3D"/><text x="231" y="9">Pending — 1%</text>
-          </g>
-        </svg>
-        <figcaption>19 closed, 6 pending opening — 25 facilities of capacity sitting idle.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section>
-    <h2>Where the gaps are</h2>
-    <p>Facility count alone doesn't tell you much — a region can look "covered" and still be underserved once you account for population. Once I normalised by population, three regions stood out as consistently behind:</p>
-    <ul>
-      <li><strong>Mathare, Kasarani, and Embakasi</strong> all sit under 2 facilities per 10,000 people, the lowest density in the county.</li>
-      <li><strong>Dagoretti, Makadara, Embakasi, and Kasarani</strong> fall short of the recommended 18 hospital beds per 10,000 people.</li>
-      <li><strong>Mathare has no cots</strong> in the region — a specific, fixable gap in neonatal and paediatric care.</li>
-    </ul>
-
-    <h3>Facilities and beds needed to reach target ratios</h3>
-    <div class="table-scroll">
-      <table>
-        <caption>To reach 2 facilities / 10k population and 18 beds / 10k population</caption>
-        <thead>
-          <tr><th>Region</th><th class="num">Population</th><th class="num">New facilities needed</th><th class="num">New beds/cots needed</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Mathare</td><td class="num">207,000</td><td class="num flag">26</td><td class="num flag">53 (cots)</td></tr>
-          <tr><td>Kasarani</td><td class="num">1,408,000</td><td class="num flag">98</td><td class="num flag">2,074</td></tr>
-          <tr><td>Embakasi</td><td class="num">989,000</td><td class="num flag">53</td><td class="num flag">909</td></tr>
-          <tr><td>Dagoretti</td><td class="num">435,000</td><td class="num">—</td><td class="num flag">44</td></tr>
-          <tr><td>Makadara</td><td class="num">190,000</td><td class="num">—</td><td class="num flag">128</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3>Service-specific gaps (regions below county average)</h3>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>Region</th><th>Service</th><th class="num">Current</th><th class="num">Target</th><th class="num">Gap</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Kasarani</td><td>Family planning</td><td class="num">51</td><td class="num">88</td><td class="num flag">37</td></tr>
-          <tr><td>Kasarani</td><td>Inpatient/home-based care</td><td class="num">46 / 79</td><td class="num">—</td><td class="num flag">33 (HBC)</td></tr>
-          <tr><td>Kasarani</td><td>Childhood illness (C-IMCI)</td><td class="num">7</td><td class="num">24</td><td class="num flag">17</td></tr>
-          <tr><td>Embakasi</td><td>HIV treatment (ART)</td><td class="num">12</td><td class="num">25</td><td class="num flag">13</td></tr>
-          <tr><td>Embakasi</td><td>Childhood illness (C-IMCI)</td><td class="num">9</td><td class="num">17</td><td class="num flag">8</td></tr>
-          <tr><td>Mathare</td><td>Family planning</td><td class="num">5</td><td class="num">13</td><td class="num flag">8</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <h2>Recommendations</h2>
-    <ul class="rec-list">
-      <li><span class="region">Quick win</span><span>Reopen the 19 closed facilities before building anything new — especially the one already equipped with 50 beds and 20 cots that operates 24 hours. This is capacity the county already paid for.</span></li>
-      <li><span class="region">Primary care</span><span>Expedite the 6 facilities pending opening to strengthen outpatient access immediately.</span></li>
-      <li><span class="region">Kasarani</span><span>Priority region for new investment — it's short on facilities, beds, family planning, home-based care, and childhood illness services simultaneously.</span></li>
-      <li><span class="region">Mathare</span><span>Smallest population of the underserved regions but the only one with zero cots — a targeted, low-cost fix rather than a large capital project.</span></li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>What I'd do next</h2>
-    <div class="reflection">
-      <p style="margin-bottom:0;">If I extended this, I'd want to weight recommendations by estimated cost per facility/bed rather than treating every gap as equally urgent — reopening an existing facility and building a new one aren't the same lift. I'd also like to bring in travel-time data instead of straight population ratios, since a region can hit its facility-per-capita target and still leave people an hour from the nearest one.</p>
-    </div>
-  </section>
-
-</main>
-
-<section class="wrap">
-  <h3>Tools &amp; Sources</h3>
-  <div class="tools">
-    <span>Python</span><span>pandas</span><span>matplotlib</span><span>Jupyter</span><span>PowerPoint</span>
-  </div>
-  <ul style="margin-top:14px;">
-    <li>Health facility data: <a href="https://open.africa/dataset/health-facilities-in-kenya" target="_blank" rel="noopener">Kenya Master Health Facility Registry, via open.Africa</a></li>
-    <li>Population data: <a href="https://open.africa/dataset/2019-kenya-population-and-housing-census" target="_blank" rel="noopener">2019 Kenya Population and Housing Census</a></li>
-    <li>Targets referenced: WHO and UN SDG 3 indicators (3.2, 3.3, 3.7, 3.8)</li>
-  </ul>
-</section>
-
-<footer>
-    <div class="wrap footer-content">
-      <p>© 2026 Gertrude Munyao · Data Scientist, Nairobi</p>
-      <p>Based in Nairobi, Kenya. Available for data science and analytics work.</p>
-      <div class="footer-links">        
-        <a href="https://www.linkedin.com/in/gertrude-munyao-5137a01b9/">LinkedIn</a>
-        <a href="https://github.com/MunyaoG" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="../my-projects.html">Back to projects</a>
+    <nav aria-label="Primary">
+      <div class="wrap">
+        <a class="brand" href="../index.html">Gertrude Munyao</a>
+        <div class="nav-links">
+          <a href="#context">Context</a>
+          <a href="#gaps">Access gaps</a>
+          <a href="#recommendations">Recommendations</a>
+          <a href="#next">Next steps</a>
+          <a href="#sources">Tools &amp; sources</a>
+          <a href="../my-projects.html">All projects</a>
+          <a href="../index.html">Home</a>
+        </div>
       </div>
-    </div>
-  </footer>
+    </nav>
 
-</body>
+    <header class="hero">
+      <div class="wrap">
+        <div class="hero-summary">
+          <div class="hero-summary-copy">
+            <p class="kicker">Public Health &middot; Data Analysis</p>
+            <h1>Mapping healthcare access gaps in Nairobi County</h1>
+            <p class="lede">
+              A facility-level analysis of Nairobi's health infrastructure against Universal Health Coverage
+              and SDG 3 targets - identifying where the county is underserved and what it would take to close
+              the gap.
+            </p>
+            <div class="hero-actions">
+              <a
+                class="button primary"
+                href="https://github.com/MunyaoG/healthcare-gaps-analysis-python"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View on GitHub</a
+              >
+              <a
+                class="button"
+                href="Presentation-Healthcare-Access-Gaps-in-Nairobi.pdf"
+                >Read the slide deck</a
+              >
+            </div>
+          </div>
+          <table class="hero-meta-table" aria-label="Project details">
+            <tbody>
+              <tr>
+                <th scope="row">Role</th>
+                <td>Independent Analysis</td>
+              </tr>
+              <tr>
+                <th scope="row">Tools</th>
+                <td>Python, Jupyter, pandas, matplotlib</td>
+              </tr>
+              <tr>
+                <th scope="row">Data</th>
+                <td>942 facility records, 2019 census</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="content-section" id="context">
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>Context</h2>
+          </div>
+          <p>
+            SDG Target 3.8 calls for universal access to quality healthcare. I wanted to know how close
+            Nairobi County actually is to that — not at the county level, where averages hide a lot, but
+            region by region, facility by facility.
+          </p>
+          <p>
+            I combined the county's health facility registry with 2019 census sub-county population data,
+            mapped every facility to one of ten regions, and benchmarked each region against WHO and county
+            target ratios for facility density, hospital beds, and four specific services:
+            inpatient/home-based care, childhood illness management, HIV treatment, and sexual and
+            reproductive health.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section" id="overview">
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>At a glance</h2>
+          </div>
+          <div class="stat-strip">
+            <div class="stat">
+              <div class="n">900+</div>
+              <div class="l">registered facilities across Nairobi</div>
+            </div>
+            <div class="stat">
+              <div class="n">19</div>
+              <div class="l">closed facilities — untapped capacity</div>
+            </div>
+            <div class="stat">
+              <div class="n">70%</div>
+              <div class="l">of facilities are clinics or dispensaries</div>
+            </div>
+          </div>
+
+          <div class="charts">
+            <figure class="chart-card">
+              <svg viewBox="0 0 320 215" role="img" aria-label="Bar chart of facility types">
+                <text
+                  x="0"
+                  y="16"
+                  font-size="12"
+                  fill="#3A3F4E"
+                  font-family="IBM Plex Sans, sans-serif"
+                  font-weight="600"
+                  >Facility types (top 10)</text
+                >
+                <g font-family="IBM Plex Sans, sans-serif" font-size="8" fill="#3A3F4E">
+                  <text x="0" y="37">Medical Clinic</text>
+                  <rect x="60" y="28" width="205" height="12" fill="#f16133" />
+                  <text x="268" y="37" font-size="7">448</text>
+                  <text x="0" y="56">Dispensary</text>
+                  <rect x="60" y="47" width="87" height="12" fill="#f16133" />
+                  <text x="150" y="56" font-size="7">190</text>
+                  <text x="0" y="75">Health Centre</text>
+                  <rect x="60" y="66" width="40" height="12" fill="#f16133" />
+                  <text x="103" y="75" font-size="7">88</text>
+                  <text x="0" y="94">VCT Centre</text>
+                  <rect x="60" y="85" width="25" height="12" fill="#f16133" />
+                  <text x="88" y="94" font-size="7">54</text>
+                  <text x="0" y="113">Other Hospital</text>
+                  <rect x="60" y="104" width="18" height="12" fill="#f16133" />
+                  <text x="81" y="113" font-size="7">40</text>
+                  <text x="0" y="132">Nursing Home</text>
+                  <rect x="60" y="123" width="11" height="12" fill="#f16133" />
+                  <text x="74" y="132" font-size="7">25</text>
+                  <text x="0" y="151">Maternity Home</text>
+                  <rect x="60" y="142" width="6" height="12" fill="#f16133" />
+                  <text x="69" y="151" font-size="7">14</text>
+                  <text x="0" y="170">Laboratory</text>
+                  <rect x="60" y="161" width="5" height="12" fill="#f16133" />
+                  <text x="68" y="170" font-size="7">13</text>
+                  <text x="0" y="189">Medical Centre</text>
+                  <rect x="60" y="180" width="4" height="12" fill="#f16133" />
+                  <text x="67" y="189" font-size="7">12</text>
+                  <text x="0" y="208">Dental Clinic</text>
+                  <rect x="60" y="199" width="3" height="12" fill="#f16133" />
+                  <text x="65" y="208" font-size="7">10</text>
+                </g>
+              </svg>
+              <figcaption>
+                Medical clinics and dispensaries dominate; smaller specialty facilities make up the long tail.
+              </figcaption>
+            </figure>
+
+            <figure class="chart-card">
+              <svg viewBox="0 0 320 215" role="img" aria-label="Pie chart of facility operational status">
+                <text
+                  x="0"
+                  y="16"
+                  font-size="12"
+                  fill="#3A3F4E"
+                  font-family="IBM Plex Sans, sans-serif"
+                  font-weight="600"
+                  >Operational status</text
+                >
+
+                <g transform="translate(160,112)">
+                  <circle cx="0" cy="0" r="80" fill="#f16133" />
+                  <path d="M0 0 L0 -80 A80 80 0 0 1 10.2 -79.3 Z" fill="#234b70" />
+                  <path d="M0 0 L10.2 -79.3 A80 80 0 0 1 13.4 -79 Z" fill="#d8b63f" />
+                </g>
+
+                <g
+                  font-family="IBM Plex Sans, sans-serif"
+                  font-size="9"
+                  fill="#3A3F4E"
+                  transform="translate(0,196)"
+                >
+                  <rect x="0" y="0" width="10" height="10" fill="#f16133" />
+                  <text x="16" y="9">Operational — 97%</text>
+                  <rect x="120" y="0" width="10" height="10" fill="#234b70" />
+                  <text x="136" y="9">Closed — 2%</text>
+                  <rect x="215" y="0" width="10" height="10" fill="#d8b63f" />
+                  <text x="231" y="9">Pending — 1%</text>
+                </g>
+              </svg>
+              <figcaption>
+                19 closed, 6 pending opening — 25 facilities of capacity sitting idle.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="gaps">
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>Where the gaps are</h2>
+          </div>
+          <p>
+            Facility count alone doesn't tell you much — a region can look "covered" and still be
+            underserved once you account for population. Once I normalised by population, three regions
+            stood out as consistently behind:
+          </p>
+          <ul>
+            <li>
+              <strong>Mathare, Kasarani, and Embakasi</strong> all sit under 2 facilities per 10,000 people,
+              the lowest density in the county.
+            </li>
+            <li>
+              <strong>Dagoretti, Makadara, Embakasi, and Kasarani</strong> fall short of the recommended
+              18 hospital beds per 10,000 people.
+            </li>
+            <li>
+              <strong>Mathare has no cots</strong> in the region — a specific, fixable gap in neonatal and
+              paediatric care.
+            </li>
+          </ul>
+
+          <h3>Facilities and beds needed to reach target ratios</h3>
+          <div class="table-scroll table-scroll-fit">
+            <table>
+              <caption class="table-highlight">
+                To reach 2 facilities / 10k population and 18 beds / 10k population
+              </caption>
+              <thead>
+                <tr>
+                  <th>Region</th>
+                  <th class="num">Population</th>
+                  <th class="num">New facilities needed</th>
+                  <th class="num">New beds/cots needed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mathare</td>
+                  <td class="num">207,000</td>
+                  <td class="num flag">26</td>
+                  <td class="num flag">53 (cots)</td>
+                </tr>
+                <tr>
+                  <td>Kasarani</td>
+                  <td class="num">1,408,000</td>
+                  <td class="num flag">98</td>
+                  <td class="num flag">2,074</td>
+                </tr>
+                <tr>
+                  <td>Embakasi</td>
+                  <td class="num">989,000</td>
+                  <td class="num flag">53</td>
+                  <td class="num flag">909</td>
+                </tr>
+                <tr>
+                  <td>Dagoretti</td>
+                  <td class="num">435,000</td>
+                  <td class="num">—</td>
+                  <td class="num flag">44</td>
+                </tr>
+                <tr>
+                  <td>Makadara</td>
+                  <td class="num">190,000</td>
+                  <td class="num">—</td>
+                  <td class="num flag">128</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Service-specific gaps (regions below county average)</h3>
+          <div class="table-scroll table-scroll-fit">
+            <table>
+              <thead>
+                <tr>
+                  <th>Region</th>
+                  <th>Service</th>
+                  <th class="num">Current</th>
+                  <th class="num">Target</th>
+                  <th class="num">Gap</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Kasarani</td>
+                  <td>Family planning</td>
+                  <td class="num">51</td>
+                  <td class="num">88</td>
+                  <td class="num flag">37</td>
+                </tr>
+                <tr>
+                  <td>Kasarani</td>
+                  <td>Inpatient/home-based care</td>
+                  <td class="num">46 / 79</td>
+                  <td class="num">—</td>
+                  <td class="num flag">33 (HBC)</td>
+                </tr>
+                <tr>
+                  <td>Kasarani</td>
+                  <td>Childhood illness (C-IMCI)</td>
+                  <td class="num">7</td>
+                  <td class="num">24</td>
+                  <td class="num flag">17</td>
+                </tr>
+                <tr>
+                  <td>Embakasi</td>
+                  <td>HIV treatment (ART)</td>
+                  <td class="num">12</td>
+                  <td class="num">25</td>
+                  <td class="num flag">13</td>
+                </tr>
+                <tr>
+                  <td>Embakasi</td>
+                  <td>Childhood illness (C-IMCI)</td>
+                  <td class="num">9</td>
+                  <td class="num">17</td>
+                  <td class="num flag">8</td>
+                </tr>
+                <tr>
+                  <td>Mathare</td>
+                  <td>Family planning</td>
+                  <td class="num">5</td>
+                  <td class="num">13</td>
+                  <td class="num flag">8</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="recommendations">
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>Recommendations</h2>
+          </div>
+          <ul class="rec-list">
+            <li>
+              <span class="region">Quick win</span>
+              <span>
+                Reopen the 19 closed facilities before building anything new — especially the one already
+                equipped with 50 beds and 20 cots that operates 24 hours. This is capacity the county already
+                paid for.
+              </span>
+            </li>
+            <li>
+              <span class="region">Primary care</span>
+              <span>
+                Expedite the 6 facilities pending opening to strengthen outpatient access immediately.
+              </span>
+            </li>
+            <li>
+              <span class="region">Kasarani</span>
+              <span>
+                Priority region for new investment — it's short on facilities, beds, family planning,
+                home-based care, and childhood illness services simultaneously.
+              </span>
+            </li>
+            <li>
+              <span class="region">Mathare</span>
+              <span>
+                Smallest population of the underserved regions but the only one with zero cots — a targeted,
+                low-cost fix rather than a large capital project.
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="content-section" id="next">
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>What I'd do next</h2>
+          </div>
+          <div class="reflection">
+            <p>
+              If I extended this, I'd want to weight recommendations by estimated cost per facility/bed
+              rather than treating every gap as equally urgent — reopening an existing facility and
+              building a new one aren't the same lift. I'd also like to bring in travel-time data instead of
+              straight population ratios, since a region can hit its facility-per-capita target and still
+              leave people an hour from the nearest one.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="sources">
+        <div class="wrap">
+          <div class="section-heading">
+            <h2>Tools &amp; sources</h2>
+          </div>
+          <div class="tools">
+            <span>Python</span>
+            <span>pandas</span>
+            <span>matplotlib</span>
+            <span>Jupyter</span>
+            <span>PowerPoint</span>
+          </div>
+          <ul class="source-list">
+            <li>
+              Health facility data:
+              <a
+                href="https://open.africa/dataset/health-facilities-in-kenya"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Kenya Master Health Facility Registry, via open.Africa</a
+              >
+            </li>
+            <li>
+              Population data:
+              <a
+                href="https://open.africa/dataset/2019-kenya-population-and-housing-census"
+                target="_blank"
+                rel="noopener noreferrer"
+                >2019 Kenya Population and Housing Census</a
+              >
+            </li>
+            <li>Targets referenced: WHO and UN SDG 3 indicators (3.2, 3.3, 3.7, 3.8)</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap footer-content">
+        <p>© 2026 Gertrude Munyao · Data Scientist, Nairobi</p>
+        <p>Based in Nairobi, Kenya. Available for data science and analytics work.</p>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/gertrude-munyao-5137a01b9/">LinkedIn</a>
+          <a href="https://github.com/MunyaoG" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="../my-projects.html">Back to projects</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img">
+  <title>Tableau</title>
+  <g>
+    <path fill="#E97627" d="M104 96h32v32h32v32h-32v32h-32v-32H72v-32h32z"/>
+    <path fill="#6F9DA8" d="M240 24h32v40h40v32h-40v40h-32V96h-40V64h40z"/>
+    <path fill="#547F9D" d="M376 104h32v32h40v32h-40v40h-32v-40h-40v-32h40z"/>
+    <path fill="#6F9DA8" d="M40 232h32v32h40v32H72v40H40v-40H0v-32h40z"/>
+    <path fill="#164A7B" d="M232 208h48v48h48v48h-48v48h-48v-48h-48v-48h48z"/>
+    <path fill="#E97627" d="M408 208h32v40h40v32h-40v40h-32v-40h-40v-32h40z"/>
+    <path fill="#C63B50" d="M104 368h32v40h40v32h-40v40h-32v-40H64v-32h40z"/>
+    <path fill="#547F9D" d="M240 392h32v40h40v32h-40v40h-32v-40h-40v-32h40z"/>
+    <path fill="#164A7B" d="M376 360h32v40h40v32h-40v40h-32v-40h-40v-32h40z"/>
+  </g>
+</svg>

@@ -35,7 +35,6 @@
       <header class="hero" id="top">
         <div class="wrap hero-grid">
           <div>
-            <h1>Gertrude Munyao</h1>
             <p class="hero-copy">
               I turn complex data into practical decisions. With
               <strong>7+ years across data science, actuarial analysis, and business intelligence</strong>, I build
@@ -55,17 +54,7 @@
               >
             </p>
 
-            <p
-              style="
-                color: gold;
-                font-family: Fraunces, Georgia, serif;
-                font-size: 1.5rem;
-                font-weight: 500;
-                margin-bottom: 0.3em;
-              "
-            >
-              Tools
-            </p>
+            <p class="section-label tools-label">Tools</p>
 
             <p class="hero-copy">
               My work spans <strong>Python, SQL, R, and Excel, </strong>from data preparation and model validation to
@@ -103,15 +92,33 @@
         <div class="wrap">
           <div class="section-heading">
             <div>
-              <p class="eyebrow"><a href="my-projects.html">Selected work</a></p>
+              <p class="section-label"><a href="my-projects.html">Selected work</a></p>
             </div>
             <p class="muted">
-              Applied projects across machine learning, actuarial analysis, healthcare, mobility, iGaming, and sports
-              analysis. Each project links to its source repository and/or case study.
+              Applied projects across machine learning, actuarial analysis, healthcare, mobility, operations, iGaming,
+              and sports analysis. Each project links to its source repository, report, dashboard, or case study.
             </p>
           </div>
 
           <div class="project-grid">
+            <article class="project-card">
+              <span class="project-type">Mobility · Time series · Python · GCP · BigQuery</span>
+              <h3>EV battery performance analysis</h3>
+              <p>
+                Analyzed electric motorcycle battery swap and telemetry data to identify degradation patterns and
+                forecast fleet usage.
+              </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/python.svg" alt="Python">
+                <img src="assets/logos/google-cloud.svg" alt="Google Cloud Platform">
+                <img src="assets/logos/bigquery.svg" alt="BigQuery">
+              </div>
+              <div class="project-links">
+                <a href="projects/ev-battery-performance-analysis.html">Case study</a>
+                <a href="https://github.com/MunyaoG/EV-Motorcycles-Battery-Data-Analysis">GitHub repo</a>
+              </div>
+            </article>
+
             <article class="project-card">
               <span class="project-type">Healthcare · Python</span>
               <h3>Mapping healthcare access gaps</h3>
@@ -119,9 +126,70 @@
                 Compared Nairobi sub-counties on facility access, bed availability, and selected health services against
                 population and target ratios.
               </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/python.svg" alt="Python">
+              </div>
               <div class="project-links">
                 <a href="projects/nairobi-healthcare-access.html">Case study</a>
                 <a href="https://github.com/MunyaoG/healthcare-gaps-analysis-python">GitHub repo</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <span class="project-type">Operations · SQL · Python · Excel</span>
+              <h3 class="project-title-wrap">Team Performance &amp; Insights</h3>
+              <p>
+                Analyzed case-processing operations and agent performance, including review delays, resolution times,
+                workload, reopens, and efficiency trends. The report turns these findings into recommendations for
+                improving case handling and team performance.
+              </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/sql.svg" alt="SQL">
+                <img src="assets/logos/python.svg" alt="Python">
+                <img src="assets/logos/excel.svg" alt="Excel">
+              </div>
+              <div class="project-links">
+                <a href="projects/Team%20Performance%20Analysis%20%26%20Recommendantions.pdf">View PDF report</a>
+                <a href="projects/Team-Performance-Project-Queries.sql">View SQL queries</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <span class="project-type">iGaming · Tableau</span>
+              <h3>iGaming Dashboard</h3>
+              <p>
+                An interactive Tableau dashboard presenting iGaming metrics through visual analysis.
+              </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/tableau.svg" alt="Tableau">
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://public.tableau.com/views/iGamingDashboard/Dashboard1?:language=en-GB&amp;:sid=&amp;:redirect=auth&amp;:display_count=n&amp;:origin=viz_share_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View dashboard</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card">
+              <span class="project-type">Mobility · Looker · GCP</span>
+              <h3>Ride-Hailing Dashboard</h3>
+              <p>
+                An interactive Looker dashboard exploring ride-hailing data.
+              </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/looker-studio.svg" alt="Looker">
+                <img src="assets/logos/google-cloud.svg" alt="Google Cloud Platform">
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://datastudio.google.com/reporting/c533dd17-061c-4fa8-85d5-b64051d76e69/page/p_zcm04hoxxd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View dashboard</a
+                >
               </div>
             </article>
 
@@ -132,31 +200,25 @@
                 Built a claims development triangle, calculated loss development factors, and projected ultimate losses
                 from payment data.
               </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/python.svg" alt="Python">
+              </div>
               <div class="project-links">
                 <a href="https://github.com/MunyaoG/liability-projection-in-python">GitHub repo</a>
               </div>
             </article>
 
             <article class="project-card">
-              <span class="project-type">Mobility · Time series · Python</span>
-              <h3>EV battery performance analysis</h3>
-              <p>
-                Analyzed electric motorcycle battery swap and telemetry data to identify degradation patterns and
-                forecast fleet usage.
-              </p>
-              <div class="project-links">
-                <a href="projects/ev-battery-performance-analysis.html">Case study</a>
-                <a href="https://github.com/MunyaoG/EV-Motorcycles-Battery-Data-Analysis">GitHub repo</a>
-              </div>
-            </article>
-
-            <article class="project-card">
-              <span class="project-type">Sports · ML · Python</span>
+              <span class="project-type">Sports · ML · Python · SQL</span>
               <h3>Football match outcome predictor</h3>
               <p>
                 Created a web app that uses recency-weighted historical performance to estimate outcomes across leagues
                 and teams.
               </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/python.svg" alt="Python">
+                <img src="assets/logos/sql.svg" alt="SQL">
+              </div>
               <div class="project-links">
                 <a href="https://github.com/MunyaoG/sports-match-outcome-prediction">GitHub repo</a>
               </div>
@@ -165,7 +227,12 @@
             <article class="project-card">
               <span class="project-type">Actuarial · R</span>
               <h3>Claims reserving in R</h3>
-              <p>Implemented the chain ladder reserving approach in R as a companion to the Python project.</p>
+              <p>
+                Implemented the chain ladder reserving approach in R as a companion to the Python project.
+              </p>
+              <div class="project-tools" aria-label="Tools and languages used">
+                <img src="assets/logos/r.svg" alt="R">
+              </div>
               <div class="project-links">
                 <a href="https://github.com/MunyaoG/liability-projection-in-R">GitHub repo</a>
               </div>
@@ -176,14 +243,14 @@
     </main>
 
     <footer>
-    <div class="wrap footer-content">
-      <p>© 2026 Gertrude Munyao · Data Scientist, Nairobi</p>
-      <p>Based in Nairobi, Kenya. Available for data science and analytics work.</p>
-      <div class="footer-links">        
-        <a href="https://www.linkedin.com/in/gertrude-munyao-5137a01b9/">LinkedIn</a>
-        <a href="https://github.com/MunyaoG" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <div class="wrap footer-content">
+        <p>© 2026 Gertrude Munyao · Data Scientist, Nairobi</p>
+        <p>Based in Nairobi, Kenya. Available for data science and analytics work.</p>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/gertrude-munyao-5137a01b9/">LinkedIn</a>
+          <a href="https://github.com/MunyaoG" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   </body>
 </html>
